@@ -10,25 +10,27 @@ namespace BonvinoApp.CapaNegocio
     {
         #region [Atributos]
 
-        private string añadaImagenEtiqueta;
-        private string nombre;
-        private string notaDeCataBodega;
-        private float precio;
-        private List<Varietal> varietal;
-        private Bodega bodega;
-        private List<Reseña> reseñas;
+        private string _añadaImagenEtiqueta;
+        private string _nombre;
+        private string _notaDeCataBodega; //esto es una descripcion
+        private float _precioARS;
+        private List<Varietal> _varietal;
+        private Bodega _bodega;
+        private List<Reseña> _reseñas;
+
+        private List<Reseña> _reseñasFiltradas;
 
         #endregion
 
         #region [Métodos get y set]
 
-        public string AñadaImagenEtiqueta { get => añadaImagenEtiqueta; set => añadaImagenEtiqueta = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string NotaDeCataBodega { get => notaDeCataBodega; set => notaDeCataBodega = value; }
-        public float Precio { get => precio; set => precio = value; }
-        public List<Reseña> Reseñas { get => reseñas; set => reseñas = value; }
-        public List<Varietal> Varietal { get => varietal; set => varietal = value; }
-        public Bodega Bodega { get => bodega; set => bodega = value; }
+        public string AñadaImagenEtiqueta { get => _añadaImagenEtiqueta; set => _añadaImagenEtiqueta = value; }
+        public string Nombre { get => _nombre; set => _nombre = value; }
+        public string NotaDeCataBodega { get => _notaDeCataBodega; set => _notaDeCataBodega = value; }
+        public float Precio { get => _precioARS; set => _precioARS = value; }
+        public List<Reseña> Reseñas { get => _reseñas; set => _reseñas = value; }
+        public List<Varietal> Varietal { get => _varietal; set => _varietal = value; }
+        public Bodega Bodega { get => _bodega; set => _bodega = value; }
 
         #endregion
 
@@ -53,35 +55,28 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        /// <summary>
-        /// Busca todos los vinos que tienen reseñas del tipo sommelier dentro del período especificado.
-        /// </summary>
-        /// <param name="fechaDesde">La fecha de inicio del período.</param>
-        /// <param name="fechaHasta">La fecha de fin del período.</param>
-        /// <param name="vinos">La lista de vinos en la que se realizará la búsqueda de reseñas.</param>
-        /// <returns>Una lista de todos los vinos que tienen reseñas del tipo sommelier dentro del período especificado.</returns>
-        public List<Vino> TenesReseñasDeTipoEnPeriodo(DateTime fechaDesde, DateTime fechaHasta, Vino vino)
+
+        public bool tenesReseñasDeTipoEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
-            List<Vino> vinosConReseñaEnPeriodo = new List<Vino>();
+            bool response = false;
 
-                foreach (var reseña in vino.reseñas)
+            foreach (Reseña reseña in _reseñas)
+            {
+                if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
                 {
-                    if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
-                    {
-                        vinosConReseñaEnPeriodo.Add(vino);
-                        break; // Salir del bucle interno ya que encontramos una reseña que cumple con las condiciones
-                    }
+                    response = true;
+                    break; // Salir del bucle interno ya que encontramos una reseña que cumple con las condiciones
                 }
-            
+            }           
 
-            return vinosConReseñaEnPeriodo;
+            return response;
         }
 
         /// <summary>
         /// Obtiene el nombre del vino.
         /// </summary>
         /// <returns>Nombre del vino</returns>
-        public string GetNombre()
+        public string getNombre()
         {
             return Nombre;
         }
@@ -90,54 +85,54 @@ namespace BonvinoApp.CapaNegocio
         /// Obtiene el precio del vino.
         /// </summary>
         /// <returns>Precio del vino</returns>
-        public float GetPrecio()
+        public float getPrecio()
         {
             return Precio;
         }
 
-        ///// <summary>
-        ///// Busca información de la bodega.
-        ///// </summary>
-        //public void BuscarInfoBodega()
-        //{
-        //    if (reseñasFiltradas.Count > 0)
-        //    {
-        //        if (Bodega != null)
-        //        {
-        //            Bodega.getNombre();
-        //            Console.WriteLine($"Buscando información de la bodega: {Bodega.Nombre}");
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine($"No hay información de bodega asociada al vino: {Nombre}");
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"No hay reseñas de sommeliers en el período especificado para el vino: {Nombre}");
-        //    }
-
-
-        //}
-
         /// <summary>
         /// Busca información del varietal.
         /// </summary>
-        public void BuscarVarietal()
+        public void buscarVarietal()
         {
             // Lógica para buscar información del varietal
         }
 
         /// <summary>
-        /// Calcula el puntaje de sommelier en un período determinado.
+        /// Calcula el puntaje promedio de las reseñas de sommelier en un período determinado.
         /// </summary>
-        public void CalcularPjeDeSommelierEnPeriodo()
+        public float calcularPromedioCalificacion(DateTime fechaDesde, DateTime fechaHasta)
         {
-            // Lógica para calcular el puntaje de sommelier en un período específico
-            Console.WriteLine("Calculando el puntaje de sommelier en el período especificado...");
+            List<float> puntajes = new List<float>();
+
+            foreach (Reseña reseña in _reseñas)
+            {
+                if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
+                {
+                    puntajes.Add(reseña.Puntaje);
+                }
+            }
+
+            return calcularPuntajePromedio(puntajes);
         }
 
+        private float calcularPuntajePromedio(List<float> puntajes)
+        {
+            int cantidad = 0;
+            float suma = 0;
+            foreach (float puntaje in puntajes)
+            {
+                suma += puntaje;
+                cantidad++;
+            }
+
+            if (cantidad != 0)
+            {
+                return (suma / cantidad);
+            }
+
+            return 0;
+        }
 
         #endregion
     }

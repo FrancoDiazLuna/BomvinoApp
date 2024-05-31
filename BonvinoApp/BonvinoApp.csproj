@@ -58,14 +58,11 @@
     <Compile Include="CapaNegocio\TipoUva.cs" />
     <Compile Include="CapaNegocio\Varietal.cs" />
     <Compile Include="CapaNegocio\Vino.cs" />
-    <Compile Include="CapaPresentacion\Forms\ConfirmacionForm.cs">
+    <Compile Include="CapaPresentacion\Forms\VisualizacionPantalla.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CapaPresentacion\Forms\ConfirmacionForm.Designer.cs">
-      <DependentUpon>ConfirmacionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CapaPresentacion\Forms\SeleccionFechasForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="CapaPresentacion\Forms\VisualizacionPantalla.Designer.cs">
+      <DependentUpon>VisualizacionPantalla.cs</DependentUpon>
     </Compile>
     <Compile Include="CapaPresentacion\Forms\MainWindow.cs">
       <SubType>Form</SubType>
@@ -79,18 +76,6 @@
     <Compile Include="CapaPresentacion\Forms\PantallaGenerarRankingVino.Designer.cs">
       <DependentUpon>PantallaGenerarRankingVino.cs</DependentUpon>
     </Compile>
-    <Compile Include="CapaPresentacion\Forms\SeleccionFormatoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CapaPresentacion\Forms\SeleccionFormatoForm.Designer.cs">
-      <DependentUpon>SeleccionFormatoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CapaPresentacion\Forms\SeleccionResenasForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CapaPresentacion\Forms\SeleccionResenasForm.Designer.cs">
-      <DependentUpon>SeleccionResenasForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CapaPresentacion\Forms\MainWindow.resx">
@@ -98,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CapaPresentacion\Forms\PantallaGenerarRankingVino.resx">
       <DependentUpon>PantallaGenerarRankingVino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CapaPresentacion\Forms\VisualizacionPantalla.resx">
+      <DependentUpon>VisualizacionPantalla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

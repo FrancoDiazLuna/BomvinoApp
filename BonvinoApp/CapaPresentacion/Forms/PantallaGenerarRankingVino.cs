@@ -8,51 +8,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace BonvinoApp.CapaPresentacion.Forms
 {
     public partial class PantallaGenerarRankingVino : Form
     {
-        private GestorGeneracionRankingVino gestorVinos;
+        #region [Atributos]
+
+        private GestorGeneracionRankingVino _gestorRankingVinos;
+        private DateTime _fechaDesde;
+        private DateTime _fechaHasta;
+        private int _tipoReseñaSeleccionada;
+        private int _tipoVisualizacionSeleccionada;
+
+        #endregion
+
         public PantallaGenerarRankingVino()
         {
-            InitializeComponent();
-            gestorVinos = new GestorGeneracionRankingVino(this);
+            habilitarPantalla();
+            _gestorRankingVinos = new GestorGeneracionRankingVino(this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            gestorVinos.generarRankingVinos();
-        }
+        #region [Métodos]
 
         /// <summary>
-        /// Abre un cuadro de diálogo para que el usuario ingrese las fechas desde y hasta, 
-        /// valida el período de fechas y realiza acciones correspondientes con las fechas seleccionadas.
+        /// Renderiza todos los componentes de la pantalla
         /// </summary>
+        public void habilitarPantalla()
+        {
+            InitializeComponent();
+            DateTime date = DateTime.Today;
+            dtpFechaDesde.Value = date;
+            dtpFechaHasta.Value = date;
+        }
+
         public void solicitarFechaDesdeHasta()
         {
-            // Mostrar un cuadro de diálogo para que el usuario ingrese las fechas desde y hasta
-            var frmFechas = new SeleccionFechasForm();
-            if (frmFechas.ShowDialog() == DialogResult.OK)
+            gpbFiltroFechas.Enabled = true;
+        }
+
+        private void btnSeleccionarFechas_Click(object sender, EventArgs e)
+        {
+            _fechaDesde = dtpFechaDesde.Value;
+            _fechaHasta = dtpFechaHasta.Value;
+
+            bool response = false;
+
+            if (validarPeriodo(_fechaDesde, _fechaHasta))
             {
-                DateTime fechaDesde = frmFechas.FechaDesde;
-                DateTime fechaHasta = frmFechas.FechaHasta;
+                response = _gestorRankingVinos.tomarFechaDesdeHasta(_fechaDesde, _fechaHasta);
 
-                var esPeriodoValido = validarPeriodo(fechaDesde, fechaHasta);
-
-                if (esPeriodoValido)
+                if (!response)
                 {
-                    gestorVinos.tomarFechaDesdeHasta(fechaDesde, fechaHasta);
+                    MessageBox.Show("No hay reseñas en el periodo seleccionado.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    limpiarCampos(true, true, true);
                 }
-                else
-                {
-                    Console.WriteLine("El período de fechas no es válido");
-                }
-
-                // Realizar acciones con las fechas seleccionadas, como filtrar los vinos por ese rango de fechas
-                // Por ejemplo: gestorVinos.FiltrarVinosPorFecha(fechaDesde, fechaHasta);
             }
-
+            else
+            {
+                MessageBox.Show("Debe seleccionar una periodo de fechas válido.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                limpiarCampos(true, true, true);
+            }
         }
 
         /// <summary>
@@ -68,48 +85,120 @@ namespace BonvinoApp.CapaPresentacion.Forms
         {
             DateTime fechaActual = DateTime.Now;
 
-            if (fechaDesde > fechaHasta)
-            {
-                return false;
-            }
-
-            if (fechaDesde > fechaActual || fechaHasta > fechaActual)
-            {
-                return false;
-            }
-            return true;
+            return (fechaDesde <= fechaActual && fechaHasta >= fechaDesde) ? true : false;
         }
 
         public void solicitarTipoReseña()
         {
-            var frmSeleccionReseñas = new SeleccionResenasForm();
-            if (frmSeleccionReseñas.ShowDialog() == DialogResult.OK)
+            gpbTipoReseña.Enabled = true;
+        }
+
+        private void btnTipoReseña_Click(object sender, EventArgs e)
+        {            
+            _tipoReseñaSeleccionada = cmbTipoReseña.SelectedIndex;
+            _gestorRankingVinos.tomarTipoReseña(_tipoReseñaSeleccionada);
+        }
+
+        public void solicitarSeleccionFormaVisualizacion()
+        {
+            gpbVisualización.Enabled = true;
+        }
+
+        private void btnTipoVisualizacion_Click(object sender, EventArgs e)
+        {
+            if (rbtExcel.Checked)
             {
-                this.tomarTipoReseñaSommelier(frmSeleccionReseñas.ResenaSeleccionada);
+                _tipoVisualizacionSeleccionada = 1;//"Excel";
+                MessageBox.Show("Seleccinado Excel.");
+                _gestorRankingVinos.tomarSeleccionFormaVisualizacion(_tipoVisualizacionSeleccionada);
+            }
+            else if (rbtPDF.Checked)
+            {
+                _tipoVisualizacionSeleccionada = 2;// "PDF";
+                MessageBox.Show("Seleccinado PDF.");
+                _gestorRankingVinos.tomarSeleccionFormaVisualizacion(_tipoVisualizacionSeleccionada);
+            }
+            else if (rbtPantalla.Checked)
+            {
+                _tipoVisualizacionSeleccionada = 3;// "Pantalla";
+                MessageBox.Show("Seleccinado Pantalla.");
+                _gestorRankingVinos.tomarSeleccionFormaVisualizacion(_tipoVisualizacionSeleccionada);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un formato de visualización.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void tomarTipoReseñaSommelier(SeleccionResenasForm.TipoResena resenaSeleccionada)
+        public void solicitarConfirmacionGeneracionReporte()
         {
-            gestorVinos.tomarTipoReseñaSommelier(resenaSeleccionada);
+            btnConfirmar.Enabled = true;            
         }
 
-        internal void solicitarSeleccionFormaVisualizacion()
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            var frmFormatoForm = new SeleccionFormatoForm();
-            if (frmFormatoForm.ShowDialog() == DialogResult.OK)
-            {
-                gestorVinos.tomarSeleccionFormaVisualizacion(frmFormatoForm.FormatoSeleccionado);
-            }
+            _gestorRankingVinos.tomarConfirmacionGeneracionReporte(true);
         }
 
-        internal void solicitarConfirmacionGeneracionReporte()
+        public void informarGeneracionExitosaDeReporte()
         {
-            var frmConfirmacionForm = new ConfirmacionForm();
-            if (frmConfirmacionForm.ShowDialog() == DialogResult.OK)
-            {
-                gestorVinos.tomarConfirmacionGeneracionReporte(frmConfirmacionForm.Confirmacion);
-            }
+            MessageBox.Show("Se ha generado exitosamente su reporte.");
+            _gestorRankingVinos.finCU();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            _gestorRankingVinos.finCU();
+        }
+
+        /// <summary>
+        /// Método para limpiar campos
+        /// </summary>
+        public void limpiarCampos(bool fechas, bool tipoReseña, bool visualizacion)
+        {
+            if (fechas)
+            {
+                DateTime date = DateTime.Today;
+                dtpFechaDesde.Value = date;
+                dtpFechaHasta.Value = date;
+            }
+
+            if (tipoReseña)
+            {
+                cmbTipoReseña.SelectedItem = null;
+                gpbTipoReseña.Enabled = false;
+            }
+
+            if (visualizacion)
+            {
+                gpbVisualización.Enabled = false;
+                rbtExcel.Checked = false;
+                rbtPDF.Checked = false;
+                rbtPantalla.Checked = false;
+            }
+            
+            btnConfirmar.Enabled = false;
+            
+        }
+
+        private void cmbTipoReseña_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            limpiarCampos(false, false, true);
+        }
+
+        private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            limpiarCampos(false, true, true);
+        }
+
+        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            limpiarCampos(false, true, true);
+        }
+
+
+        #endregion
+
+
     }
 }

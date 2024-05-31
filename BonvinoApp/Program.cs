@@ -17,7 +17,7 @@ namespace BonvinoApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PantallaGenerarRankingVino());
+            Application.Run(new MainWindow());
         }
     }
 }

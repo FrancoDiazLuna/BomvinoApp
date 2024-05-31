@@ -22,3 +22,4 @@ C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.pdb
 C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\bin\Debug\BonvinoApp.exe.config
 C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\bin\Debug\BonvinoApp.exe
 C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\bin\Debug\BonvinoApp.pdb
+C:\Users\diazl\OneDrive\Escritorio\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.CapaPresentacion.Forms.VisualizacionPantalla.resources
