@@ -39,13 +39,13 @@ No Contempla:
 ➤ PPAI2023_3K5_G7
 - [legajo -	Adami, Constanza](https://www.github.com/CotyAdami)
 - [77029 -	Diaz Luna, Franco](https://www.github.com/FrancoDiazLuna)
-- [legajo -	Duarte, Lucia](https://www.github.com/luciaduarte12)
+- [87408 -	Duarte, Lucia](https://www.github.com/luciaduarte12)
 - [86495 - Lypnik, Zoi](https://www.github.com/ZoiLyp)
 - [legajo -	Pereyra, Ezequiel ](https://www.github.com/EzePCba)
 - [16467 -	Ponce, Ariel](https://www.github.com/narielponce)
-- [legajo -	Pucheta, Lanfranco](https://www.github.com/Lann206)
+- [86363 -	Pucheta, Lanfranco](https://www.github.com/Lann206)
 - [legajo -	Marchetti, Matias ](https://www.github.com/Matiash96)
-- [legajo -	Morellato, Mayra](https://www.github.com/MayraMorellato)  
+- [97325 -	Morellato, Mayra](https://www.github.com/MayraMorellato)  
 - [legajo -	Zin, Cecilia ](https://www.github.com/CeciliaZin)
 
 
@@ -69,4 +69,4 @@ Este proyecto es utilizado por las siguientes empresas:
 
 ## Soporte
 
-🤖 Para obtener asistencia, comuníquese con el equipo de Soporte (DSI_3K5_2024_nroGrupo@gmail.com) ✉
+🤖 Para obtener asistencia, comuníquese con el equipo de Soporte (DSI_3K5_2024_Pritty&Wine@gmail.com) ✉
