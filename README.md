@@ -37,16 +37,16 @@ No Contempla:
 ⋐ Universidad Tecnológica Nacional - Facultad Regional Córdoba ⋑
 
 ➤ PPAI2023_3K5_G7
-- [legajo -	Adami, Constanza](https://www.github.com/CotyAdami)
+- [68699 -	Adami, Constanza](https://www.github.com/CotyAdami)
 - [77029 -	Diaz Luna, Franco](https://www.github.com/FrancoDiazLuna)
 - [87408 -	Duarte, Lucia](https://www.github.com/luciaduarte12)
 - [86495 - Lypnik, Zoi](https://www.github.com/ZoiLyp)
-- [legajo -	Pereyra, Ezequiel ](https://www.github.com/EzePCba)
+- [67205 -	Pereyra, Ezequiel ](https://www.github.com/EzePCba)
 - [16467 -	Ponce, Ariel](https://www.github.com/narielponce)
 - [86363 -	Pucheta, Lanfranco](https://www.github.com/Lann206)
-- [legajo -	Marchetti, Matias ](https://www.github.com/Matiash96)
+- [70363 -	Marchetti, Matias ](https://www.github.com/Matiash96)
 - [97325 -	Morellato, Mayra](https://www.github.com/MayraMorellato)  
-- [legajo -	Zin, Cecilia ](https://www.github.com/CeciliaZin)
+- [97924 -	Zin, Cecilia ](https://www.github.com/CeciliaZin)
 
 
 ## Roadmap
