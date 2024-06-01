@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BonvinoApp.CapaNegocio
 {
@@ -10,19 +6,19 @@ namespace BonvinoApp.CapaNegocio
     {
         #region [Atributos]
 
-        private string comentario;
-        private bool esPremium;
-        private DateTime fechaReseña;
-        private float puntaje;
+        private string _comentario;
+        private bool _esPremium;
+        private DateTime _fechaReseña;
+        private float _puntaje;
 
         #endregion
 
         #region [Métodos get y set]
 
-        public string Comentario { get => comentario; set => comentario = value; }
-        public bool EsPremium { get => esPremium; set => esPremium = value; }
-        public DateTime FechaReseña { get => fechaReseña; set => fechaReseña = value; }
-        public float Puntaje { get => puntaje; set => puntaje = value; }
+        public string Comentario { get => _comentario; set => _comentario = value; }
+        public bool EsPremium { get => _esPremium; set => _esPremium = value; }
+        public DateTime FechaReseña { get => _fechaReseña; set => _fechaReseña = value; }
+        public float Puntaje { get => _puntaje; set => _puntaje = value; }
 
         #endregion
 
@@ -43,15 +39,13 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        //métodos propios de la clase
         public bool sosDePeriodo(DateTime fechaDesde, DateTime fechaHasta) {
             return FechaReseña >= fechaDesde && FechaReseña <= fechaHasta;
         }
-
     
         public bool sosDeSommelier() 
         {
-            return esPremium;
+            return EsPremium;
         }
 
         #endregion
