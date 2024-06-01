@@ -12,12 +12,13 @@ namespace BonvinoApp.CapaNegocio
 
         private string nombre;
         private Bodega bodega;
+        private Provincia provincia;
 
         #endregion
 
         #region [Métodos get y set]
         public string Nombre { get => nombre; set => nombre = value; }
-
+        public Provincia Provincia { get => provincia; set => provincia = value; }
         #endregion
 
         /// <summary>
@@ -27,12 +28,24 @@ namespace BonvinoApp.CapaNegocio
         public RegionVitivinicola(string nombre)
         {
             Nombre = nombre;
+            Provincia = provincia;
         }
 
 
         #region [Métodos]
 
         //métodos propios de la clase
+
+        private string getNombre()
+        {
+            return Nombre;
+        }
+
+
+        private string obtenerPais(RegionVitivinicola region)
+        { 
+            return Provincia.Nombre; 
+        }
 
         #endregion
     }

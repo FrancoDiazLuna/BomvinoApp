@@ -48,6 +48,17 @@ namespace BonvinoApp.CapaDatos
         public static Varietal varietal10 = new Varietal("Grenache", 1.0f, tipoUva10);
 
 
+        public static Pais pais1 = new Pais("Argentina");
+        public static Pais pais2 = new Pais("Brasil");
+        public static Pais pais3 = new Pais("Chile");
+        public static Pais pais4 = new Pais("Uruguay");
+        public static Pais pais5 = new Pais("Paraguay");
+        public static Pais pais6 = new Pais("Bolivia");
+        public static Pais pais7 = new Pais("Perú");
+        public static Pais pais8 = new Pais("Colombia");
+        public static Pais pais9 = new Pais("Venezuela");
+        public static Pais pais10 = new Pais("Ecuador");
+
 
 
 

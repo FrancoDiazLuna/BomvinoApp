@@ -12,6 +12,7 @@ namespace BonvinoApp.CapaNegocio
 
         private string nombre;
         private List<Pais> pais;
+        private Provincia provincia;
 
         #endregion
 
@@ -33,6 +34,11 @@ namespace BonvinoApp.CapaNegocio
         #region [Métodos]
 
         //métodos propios de la clase
+
+        private string getNombre()
+        {
+            return Nombre;
+        }
 
         #endregion
     }
