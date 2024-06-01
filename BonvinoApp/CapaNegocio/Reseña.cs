@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BonvinoApp.CapaNegocio
 {
@@ -6,19 +10,22 @@ namespace BonvinoApp.CapaNegocio
     {
         #region [Atributos]
 
-        private string _comentario;
-        private bool _esPremium;
-        private DateTime _fechaReseña;
-        private float _puntaje;
+        private string comentario;
+        private bool esPremium;
+        private DateTime fechaReseña;
+        private float puntaje;
+        private TipoReseña tipoReseña;
+        private Vino vino;
 
         #endregion
 
         #region [Métodos get y set]
 
-        public string Comentario { get => _comentario; set => _comentario = value; }
-        public bool EsPremium { get => _esPremium; set => _esPremium = value; }
-        public DateTime FechaReseña { get => _fechaReseña; set => _fechaReseña = value; }
-        public float Puntaje { get => _puntaje; set => _puntaje = value; }
+        public string Comentario { get => comentario; set => comentario = value; }
+        public bool EsPremium { get => esPremium; set => esPremium = value; }
+        public DateTime FechaReseña { get => fechaReseña; set => fechaReseña = value; }
+        public float Puntaje { get => puntaje; set => puntaje = value; }
+        internal TipoReseña TipoReseña { get => tipoReseña; set => tipoReseña = value; }
 
         #endregion
 
@@ -39,14 +46,18 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        public bool sosDePeriodo(DateTime fechaDesde, DateTime fechaHasta) {
+        //métodos propios de la clase
+        private bool sosDePeriodo(DateTime fechaDesde, DateTime fechaHasta) {
             return FechaReseña >= fechaDesde && FechaReseña <= fechaHasta;
         }
+
     
-        public bool sosDeSommelier() 
+        private bool sosDeSommelier() 
         {
-            return EsPremium;
+            return esPremium
         }
+        private float getPje() { }
+
 
         #endregion
     }

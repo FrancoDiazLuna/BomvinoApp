@@ -23,3 +23,10 @@ C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\bin\Debug\BonvinoApp.exe.config
 C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\bin\Debug\BonvinoApp.exe
 C:\Users\Eze\Source\Repos\BomvinoApp\BonvinoApp\bin\Debug\BonvinoApp.pdb
 C:\Users\diazl\OneDrive\Escritorio\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.CapaPresentacion.Forms.VisualizacionPantalla.resources
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.csproj.AssemblyReference.cache
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.MainWindow.resources
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.CapaPresentacion.Forms.PantallaGenerarRankingVino.resources
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.CapaPresentacion.Forms.VisualizacionPantalla.resources
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.Properties.Resources.resources
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.csproj.GenerateResource.cache
+C:\Users\usuario\source\repos\BomvinoApp\BonvinoApp\obj\Debug\BonvinoApp.csproj.CoreCompileInputs.cache

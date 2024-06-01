@@ -19,7 +19,7 @@ namespace BonvinoApp.CapaNegocio.Gestores
         public GestorGeneracionRankingVino(PantallaGenerarRankingVino pantallaGenerarRankingVino) {
             this.pantallaGenerarRankingVino = pantallaGenerarRankingVino;
             
-            //y habria que cargar los datos
+            
         }
 
         #region [Métodos]

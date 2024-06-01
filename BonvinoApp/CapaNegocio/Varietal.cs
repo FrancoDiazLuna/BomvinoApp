@@ -19,6 +19,8 @@ namespace BonvinoApp.CapaNegocio
         #region [Métodos get y set]
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public float Porcentaje { get => porcentaje; set => porcentaje = value; }
+        public TipoUva TipoUva { get => tipoUva; set => tipoUva = value; }
+
 
         #endregion
 
@@ -31,7 +33,7 @@ namespace BonvinoApp.CapaNegocio
         {
             Descripcion = descripcion;
             Porcentaje = porcentaje;
-            this.tipoUva = tipoUva;
+            TipoUva = tipoUva;
         }
 
 

@@ -9,7 +9,7 @@ namespace BonvinoApp.CapaDatos
 {
     class generalDAC
     {
-
+        
         public static Bodega bodega1 = new Bodega("34.052235, -118.243683", "Almacén central en Los Ángeles", "Fundada en 1920, sirvió como el principal almacén de la ciudad.", "Central LA", 5000);
         public static Bodega bodega2 = new Bodega("40.712776, -74.005974", "Bodega en Nueva York", "Establecida en 1898, es uno de los almacenes más antiguos de la ciudad.", "NY Warehouse", 10000);
         public static Bodega bodega3 = new Bodega("37.774929, -122.419418", "Almacén en San Francisco", "Inaugurada en 1950, ha sido clave en la distribución de productos en la bahía.", "SF Storage", 7500);
@@ -21,8 +21,10 @@ namespace BonvinoApp.CapaDatos
         public static Bodega bodega9 = new Bodega("52.520008, 13.404954", "Almacén en Berlín", "Reconstruido después de la guerra, es un símbolo de resiliencia.", "Berlin Depot", 8500);
         public static Bodega bodega10 = new Bodega("-23.550520, -46.633308", "Bodega en São Paulo", "Establecida en 1990, es la más grande en América del Sur.", "São Paulo Warehouse", 9500);
 
+
+
         public static TipoUva tipoUva1 = new TipoUva("Cabernet Sauvignon", "Uva tinta de origen francés, muy popular en la producción de vinos tintos");
-        public static TipoUva tipoUva2 = new TipoUva("Chardonnay", "Uva blanca originaria de la región de Borgoña, utilizada en la producción de vinos blancos");
+        public static TipoUva tipoUva2= new TipoUva("Chardonnay", "Uva blanca originaria de la región de Borgoña, utilizada en la producción de vinos blancos");
         public static TipoUva tipoUva3 = new TipoUva("Merlot", "Uva tinta con sabor a frutas y menos taninos que el Cabernet Sauvignon");
         public static TipoUva tipoUva4 = new TipoUva("Pinot Noir", "Uva tinta conocida por su dificultad de cultivo pero produce vinos de alta calidad");
         public static TipoUva tipoUva5 = new TipoUva("Sauvignon Blanc", "Uva blanca con sabores herbáceos y cítricos, usada para hacer vinos blancos frescos");
@@ -32,55 +34,35 @@ namespace BonvinoApp.CapaDatos
         public static TipoUva tipoUva9 = new TipoUva("Tempranillo", "Uva tinta originaria de España, utilizada en la producción de vinos tintos de cuerpo medio");
         public static TipoUva tipoUva10 = new TipoUva("Sémillon", "Uva blanca utilizada en la producción de vinos blancos secos y dulces, especialmente en Burdeos");
 
-        public List<Vino> returnVinos()
-        {
-            List<Vino> listaVinos = new List<Vino>();
 
-            listaVinos.Add(new Vino("ImagenEtiqueta1", "VinoMiSuegra", "1.0", 1.5f, crearListaVarietales(), crearListaReseña(), bodega1));
-            listaVinos.Add(new Vino("ImagenEtiqueta2", "VinoMiSuegra2", "2.0", 2.5f, crearListaVarietales(), crearListaReseña(), bodega2));
-            listaVinos.Add(new Vino("ImagenEtiqueta3", "VinoMiSuegra3", "3.0", 3.5f, crearListaVarietales(), crearListaReseña(), bodega3));
-            listaVinos.Add(new Vino("ImagenEtiqueta4", "VinoMiSuegra4", "4.0", 4.5f, crearListaVarietales(), crearListaReseña(), bodega4));
-            listaVinos.Add(new Vino("ImagenEtiqueta5", "VinoMiSuegra5", "5.0", 5.5f, crearListaVarietales(), crearListaReseña(), bodega5));
-            listaVinos.Add(new Vino("ImagenEtiqueta6", "VinoMiSuegra6", "6.0", 6.5f, crearListaVarietales(), crearListaReseña(), bodega6));
-            listaVinos.Add(new Vino("ImagenEtiqueta7", "VinoMiSuegra7", "7.0", 7.5f, crearListaVarietales(), crearListaReseña(), bodega7));
-            listaVinos.Add(new Vino("ImagenEtiqueta8", "VinoMiSuegra8", "8.0", 8.5f, crearListaVarietales(), crearListaReseña(), bodega8));
-            listaVinos.Add(new Vino("ImagenEtiqueta9", "VinoMiSuegra9", "9.0", 9.5f, crearListaVarietales(), crearListaReseña(), bodega9));
 
-            return listaVinos;
-        }
+        public static Varietal varietal1 = new Varietal("Cabernet Sauvignon", 40.5f, tipoUva1);
+        public static Varietal varietal2 = new Varietal("Merlot", 30.0f, tipoUva2);
+        public static Varietal varietal3 = new Varietal("Pinot Noir", 10.0f, tipoUva3);
+        public static Varietal varietal4 = new Varietal("Syrah", 5.5f,tipoUva4);
+        public static Varietal varietal5 = new Varietal("Zinfandel", 3.0f,tipoUva5);
+        public static Varietal varietal6 = new Varietal("Malbec", 2.5f,tipoUva6);
+        public static Varietal varietal7 = new Varietal("Sauvignon Blanc", 4.0f,tipoUva7);
+        public static Varietal varietal8 = new Varietal("Chardonnay", 2.5f,tipoUva8);
+        public static Varietal varietal9 = new Varietal("Riesling", 1.0f,tipoUva9);
+        public static Varietal varietal10 = new Varietal("Grenache", 1.0f, tipoUva10);
 
-        private List<Varietal> crearListaVarietales()
-        {
-            List<Varietal> listaVarietales = new List<Varietal>();
 
-            // Agregar los varietales a la lista
-            listaVarietales.Add(new Varietal("Cabernet Sauvignon", 40.5f, tipoUva1));
-            listaVarietales.Add(new Varietal("Merlot", 30.0f, tipoUva2));
-            listaVarietales.Add(new Varietal("Pinot Noir", 10.0f, tipoUva3));
-            listaVarietales.Add(new Varietal("Syrah", 5.5f, tipoUva4));
-            listaVarietales.Add(new Varietal("Zinfandel", 3.0f, tipoUva5));
-            listaVarietales.Add(new Varietal("Malbec", 2.5f, tipoUva6));
-            listaVarietales.Add(new Varietal("Sauvignon Blanc", 4.0f, tipoUva7));
-            listaVarietales.Add(new Varietal("Chardonnay", 2.5f, tipoUva8));
-            listaVarietales.Add(new Varietal("Riesling", 1.0f, tipoUva9));
-            listaVarietales.Add(new Varietal("Grenache", 1.0f, tipoUva10));
-            return listaVarietales;
-        }
+        public static Pais pais1 = new Pais("Argentina");
+        public static Pais pais2 = new Pais("Brasil");
+        public static Pais pais3 = new Pais("Chile");
+        public static Pais pais4 = new Pais("Uruguay");
+        public static Pais pais5 = new Pais("Paraguay");
+        public static Pais pais6 = new Pais("Bolivia");
+        public static Pais pais7 = new Pais("Perú");
+        public static Pais pais8 = new Pais("Colombia");
+        public static Pais pais9 = new Pais("Venezuela");
+        public static Pais pais10 = new Pais("Ecuador");
 
-        private List<Reseña> crearListaReseña()
-        {
-            List<Reseña> listaReseñas = new List<Reseña>();
-            listaReseñas.Add(new Reseña("Excelente producto", true, DateTime.Now.AddDays(-10), 4.5f));
-            listaReseñas.Add(new Reseña("Buena relación calidad-precio", false, DateTime.Now.AddDays(-5), 4.0f));
-            listaReseñas.Add(new Reseña("Envío rápido, producto como se describe", true, DateTime.Now.AddDays(-7), 5.0f));
-            listaReseñas.Add(new Reseña("No recibí el producto aún", false, DateTime.Now.AddDays(-15), 2.0f));
-            listaReseñas.Add(new Reseña("Producto defectuoso, pero excelente servicio al cliente", true, DateTime.Now.AddDays(-3), 3.5f));
-            listaReseñas.Add(new Reseña("No lo recomiendo, mala calidad", false, DateTime.Now.AddDays(-8), 1.0f));
-            listaReseñas.Add(new Reseña("El producto llegó tarde", true, DateTime.Now.AddDays(-12), 3.0f));
-            listaReseñas.Add(new Reseña("Buen producto, pero un poco caro", false, DateTime.Now.AddDays(-2), 4.0f));
-            listaReseñas.Add(new Reseña("Muy satisfecho con mi compra", true, DateTime.Now.AddDays(-6), 4.7f));
-            listaReseñas.Add(new Reseña("Producto excelente, lo recomiendo", false, DateTime.Now.AddDays(-4), 5.0f));
-            return listaReseñas;
-        }
+
+
+
+
+
     }
 }
