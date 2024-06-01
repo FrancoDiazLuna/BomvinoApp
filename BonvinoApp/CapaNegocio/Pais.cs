@@ -11,14 +11,15 @@ namespace BonvinoApp.CapaNegocio
         #region [Atributos]
 
         private string nombre;
-        private List<Pais> pais;
-        private Provincia provincia;
+        private List<Provincia> provincia;
 
         #endregion
 
         #region [Métodos get y set]
 
         public string Nombre { get => nombre; set => nombre = value; }
+        internal List<Provincia> Provincia { get => provincia; set => provincia = value; }
+
 
         #endregion
 
@@ -29,6 +30,7 @@ namespace BonvinoApp.CapaNegocio
         public Pais(string nombre)
         {
             Nombre = nombre;
+            Provincia = new List<Provincia>();
         }
 
         #region [Métodos]
@@ -38,6 +40,11 @@ namespace BonvinoApp.CapaNegocio
         private string getNombre()
         {
             return Nombre;
+        }
+
+        public void agregarProvincia(Provincia provincia)
+        {
+            Provincia.Add(provincia);
         }
 
         #endregion

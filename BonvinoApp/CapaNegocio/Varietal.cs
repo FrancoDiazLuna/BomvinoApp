@@ -33,7 +33,7 @@ namespace BonvinoApp.CapaNegocio
         {
             Descripcion = descripcion;
             Porcentaje = porcentaje;
-            this.tipoUva = tipoUva;
+            TipoUva = tipoUva;
         }
 
 

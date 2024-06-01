@@ -12,7 +12,6 @@ namespace BonvinoApp.CapaNegocio
 
         private string nombre;
         private List<RegionVitivinicola> regionVitivinicola;
-        private List<Provincia> provincia;
         private Pais pais;
         #endregion
 
@@ -20,17 +19,19 @@ namespace BonvinoApp.CapaNegocio
 
         public string Nombre { get => nombre; set => nombre = value; }
         public Pais Pais { get => pais; set => pais = value; }
-        
-#endregion
+        public List<RegionVitivinicola> RegionVitivinicola { get => regionVitivinicola; set => regionVitivinicola = value; }
+
+        #endregion
 
         /// <summary>
         /// Constructor de la clase Provincia
         /// </summary>
         /// <param name="nombre"></param>
-        public Provincia(string nombre)
+        public Provincia(string nombre, Pais pais)
         {
             Nombre = nombre;
             Pais = pais;
+            RegionVitivinicola = new List<RegionVitivinicola>() ;
         }
 
 
@@ -41,6 +42,11 @@ namespace BonvinoApp.CapaNegocio
         private string obtenerPais() 
         {
             return Pais.Nombre;
+        }
+
+        public void agregarRegion(RegionVitivinicola region)
+        {
+            RegionVitivinicola.Add(region);
         }
 
         #endregion
