@@ -11,12 +11,13 @@ namespace BonvinoApp.CapaNegocio
         #region [Atributos]
 
         private string nombre;
-        private Bodega bodega;
+        private string descripcion;
 
         #endregion
 
         #region [Métodos get y set]
         public string Nombre { get => nombre; set => nombre = value; }
+        public string Descripcion { get => descripcion; set => descripcion = value; }
 
         #endregion
 
@@ -24,15 +25,21 @@ namespace BonvinoApp.CapaNegocio
         /// Constructor de la clase RegionVitivinicola
         /// </summary>
         /// <param name="nombre"></param>
-        public RegionVitivinicola(string nombre)
+        public RegionVitivinicola(string nombre, string descripcion)
         {
             Nombre = nombre;
+            this.descripcion = descripcion;
         }
 
 
         #region [Métodos]
 
         //métodos propios de la clase
+
+        internal void obtenerPais()
+        {
+            Provincia.ObtenerProvinciaDeRegion(this);
+        }
 
         #endregion
     }

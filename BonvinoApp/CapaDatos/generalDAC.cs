@@ -32,6 +32,42 @@ namespace BonvinoApp.CapaDatos
         public static TipoUva tipoUva9 = new TipoUva("Tempranillo", "Uva tinta originaria de España, utilizada en la producción de vinos tintos de cuerpo medio");
         public static TipoUva tipoUva10 = new TipoUva("Sémillon", "Uva blanca utilizada en la producción de vinos blancos secos y dulces, especialmente en Burdeos");
 
+
+        public static RegionVitivinicola regionVitivinicola1 = new RegionVitivinicola("NombreRegion2", "Descripción de la región 2");
+        public static RegionVitivinicola regionVitivinicola2 = new RegionVitivinicola("NombreRegion1", "Descripción de la región 1");
+        public static RegionVitivinicola regionVitivinicola3 = new RegionVitivinicola("NombreRegion3", "Descripción de la región 3");
+        public static RegionVitivinicola regionVitivinicola4 = new RegionVitivinicola("NombreRegion4", "Descripción de la región 4");
+        public static RegionVitivinicola regionVitivinicola5 = new RegionVitivinicola("NombreRegion5", "Descripción de la región 5");
+        public static RegionVitivinicola regionVitivinicola6 = new RegionVitivinicola("NombreRegion6", "Descripción de la región 6");
+        public static RegionVitivinicola regionVitivinicola7 = new RegionVitivinicola("NombreRegion7", "Descripción de la región 7");
+        public static RegionVitivinicola regionVitivinicola8 = new RegionVitivinicola("NombreRegion8", "Descripción de la región 8");
+        public static RegionVitivinicola regionVitivinicola9 = new RegionVitivinicola("NombreRegion9", "Descripción de la región 9");
+        public static RegionVitivinicola regionVitivinicola10 = new RegionVitivinicola("NombreRegion10", "Descripción de la región 10");
+
+        public static Provincia provincia = new Provincia("Cordoba", new List<RegionVitivinicola> { regionVitivinicola1, regionVitivinicola2 });
+        public static Provincia provincia1 = new Provincia("BsAs", new List<RegionVitivinicola> { regionVitivinicola3, regionVitivinicola4 });
+        public static Provincia provincia2 = new Provincia("Corrientes", new List<RegionVitivinicola> { regionVitivinicola5, regionVitivinicola6 });
+
+        public static Pais pais = new Pais("Argentina", new List<Provincia> { provincia, provincia1, provincia2 });
+
+        public Pais returnPais()
+        {
+            return pais;
+        }
+
+        public List<Provincia> returnProvincia()
+        {
+            return new List<Provincia> { provincia, provincia1, provincia2 };
+        }
+
+        public List<RegionVitivinicola> returnRegionVitivinicola()
+        {
+            return new List<RegionVitivinicola> { regionVitivinicola1, regionVitivinicola2, regionVitivinicola3, regionVitivinicola4, regionVitivinicola5, regionVitivinicola6, regionVitivinicola7, regionVitivinicola8, regionVitivinicola9 };
+        }
+
+
+
+
         public List<Vino> returnVinos()
         {
             List<Vino> listaVinos = new List<Vino>();

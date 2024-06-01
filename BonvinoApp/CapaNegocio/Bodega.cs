@@ -15,6 +15,7 @@ namespace BonvinoApp.CapaNegocio
         private string descripcion;
         private string historia;
         private string nombre;
+        private RegionVitivinicola region;
         private int periodoActualizacion; //no tengo idea que es esto, le mande int
 
         #endregion
@@ -25,6 +26,7 @@ namespace BonvinoApp.CapaNegocio
         public string Historia { get => historia; set => historia = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public int PeriodoActualizacion { get => periodoActualizacion; set => periodoActualizacion = value; }
+        internal RegionVitivinicola Region { get => region; set => region = value; }
 
         #endregion
 
@@ -36,13 +38,20 @@ namespace BonvinoApp.CapaNegocio
         /// <param name="historia"></param>
         /// <param name="nombre"></param>
         /// <param name="periodoActualizacion"></param>
-        public Bodega(string coordenadasUbicacion, string descripcion, string historia, string nombre, int periodoActualizacion)
+        public Bodega(string coordenadasUbicacion, string descripcion, string historia, string nombre, int periodoActualizacion, RegionVitivinicola region)
         {
             CoordenadasUbicacion = coordenadasUbicacion;
             Descripcion = descripcion;
             Historia = historia;
             Nombre = nombre;
             PeriodoActualizacion = periodoActualizacion;
+            this.region = region;
+        }
+
+        internal string obtenerRegionYPais()
+        {
+            region.obtenerPais();
+            return region.Nombre;
         }
 
         #region [Métodos]

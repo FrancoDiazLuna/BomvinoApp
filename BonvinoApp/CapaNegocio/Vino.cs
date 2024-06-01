@@ -54,27 +54,24 @@ namespace BonvinoApp.CapaNegocio
         #region [Métodos]
 
         /// <summary>
-        /// Busca todos los vinos que tienen reseñas del tipo sommelier dentro del período especificado.
+        /// Busca todas las reseñas del vinos que tienen reseñas del tipo sommelier dentro del período especificado.
         /// </summary>
         /// <param name="fechaDesde">La fecha de inicio del período.</param>
         /// <param name="fechaHasta">La fecha de fin del período.</param>
         /// <param name="vinos">La lista de vinos en la que se realizará la búsqueda de reseñas.</param>
         /// <returns>Una lista de todos los vinos que tienen reseñas del tipo sommelier dentro del período especificado.</returns>
-        public List<Vino> TenesReseñasDeTipoEnPeriodo(DateTime fechaDesde, DateTime fechaHasta, Vino vino)
+        public Boolean TenesReseñasDeTipoEnPeriodo(DateTime fechaDesde, DateTime fechaHasta, Vino vino)
         {
             List<Vino> vinosConReseñaEnPeriodo = new List<Vino>();
 
-                foreach (var reseña in vino.reseñas)
+            foreach (var reseña in vino.reseñas)
+            {
+                if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
                 {
-                    if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
-                    {
-                        vinosConReseñaEnPeriodo.Add(vino);
-                        break; // Salir del bucle interno ya que encontramos una reseña que cumple con las condiciones
-                    }
+                    return true;
                 }
-            
-
-            return vinosConReseñaEnPeriodo;
+            }
+            return false;
         }
 
         /// <summary>
@@ -95,31 +92,15 @@ namespace BonvinoApp.CapaNegocio
             return Precio;
         }
 
-        ///// <summary>
-        ///// Busca información de la bodega.
-        ///// </summary>
-        //public void BuscarInfoBodega()
-        //{
-        //    if (reseñasFiltradas.Count > 0)
-        //    {
-        //        if (Bodega != null)
-        //        {
-        //            Bodega.getNombre();
-        //            Console.WriteLine($"Buscando información de la bodega: {Bodega.Nombre}");
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine($"No hay información de bodega asociada al vino: {Nombre}");
-        //        }
+        /// <summary>
+        /// Busca información de la bodega.
+        /// </summary>
+        public String BuscarInfoBodega()
+        {
+            bodega.obtenerRegionYPais();
+            return bodega.Nombre;
 
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"No hay reseñas de sommeliers en el período especificado para el vino: {Nombre}");
-        //    }
-
-
-        //}
+        }
 
         /// <summary>
         /// Busca información del varietal.
