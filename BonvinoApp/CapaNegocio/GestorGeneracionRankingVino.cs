@@ -46,7 +46,10 @@ namespace BonvinoApp.CapaNegocio.Gestores
             this._fechaDesde = fechaDesde;
             this._fechaHasta = fechaHasta;
 
-            _pantallaGenerarRankingVino.solicitarTipoReseña();
+            do
+            {
+                _pantallaGenerarRankingVino.solicitarTipoReseña();
+            } while (_fechaDesde > _fechaHasta && _fechaDesde > DateTime.Today);
 
             return true;
         }

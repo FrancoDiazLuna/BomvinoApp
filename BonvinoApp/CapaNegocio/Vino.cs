@@ -7,7 +7,8 @@ namespace BonvinoApp.CapaNegocio
     {
         #region [Atributos]
 
-        private string _añadaImagenEtiqueta;
+        private int _añada;
+        private string _imagenEtiqueta;
         private string _nombre;
         private string _notaDeCataBodega; //esto es una descripcion
         private float _precioARS;
@@ -21,7 +22,8 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos get y set]
 
-        public string AñadaImagenEtiqueta { get => _añadaImagenEtiqueta; set => _añadaImagenEtiqueta = value; }
+        public int Añada { get => _añada; set => _añada = value; }
+        public string ImagenEtiqueta { get => _imagenEtiqueta; set => _imagenEtiqueta = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string NotaDeCataBodega { get => _notaDeCataBodega; set => _notaDeCataBodega = value; }
         public float Precio { get => _precioARS; set => _precioARS = value; }
@@ -38,9 +40,10 @@ namespace BonvinoApp.CapaNegocio
         /// <param name="nombre"></param>
         /// <param name="notaDeCataBodega"></param>
         /// <param name="precio"></param>
-        public Vino(string añadaImagenEtiqueta, string nombre, string notaDeCataBodega, float precio, List<Varietal> varietales, List<Reseña> reseñas, Bodega bodega)
+        public Vino(int añada, string imagenEtiqueta, string nombre, string notaDeCataBodega, float precio, List<Varietal> varietales, List<Reseña> reseñas, Bodega bodega)
         {
-            AñadaImagenEtiqueta = añadaImagenEtiqueta;
+            Añada = añada;
+            ImagenEtiqueta = imagenEtiqueta;
             Nombre = nombre;
             NotaDeCataBodega = notaDeCataBodega;
             Precio = precio;

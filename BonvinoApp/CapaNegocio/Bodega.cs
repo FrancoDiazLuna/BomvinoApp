@@ -15,8 +15,8 @@ namespace BonvinoApp.CapaNegocio
         private string descripcion;
         private string historia;
         private string nombre;
-        private int periodoActualizacion; //no tengo idea que es esto, le mande int
-
+        private int periodoActualizacion;
+        private RegionVitivinicola regionVitivinicola;
         #endregion
 
         #region [Métodos get y set]
@@ -36,13 +36,14 @@ namespace BonvinoApp.CapaNegocio
         /// <param name="historia"></param>
         /// <param name="nombre"></param>
         /// <param name="periodoActualizacion"></param>
-        public Bodega(string coordenadasUbicacion, string descripcion, string historia, string nombre, int periodoActualizacion)
+        public Bodega(string coordenadasUbicacion, string descripcion, string historia, string nombre, int periodoActualizacion, RegionVitivinicola regionVitivinicola)
         {
             CoordenadasUbicacion = coordenadasUbicacion;
             Descripcion = descripcion;
             Historia = historia;
             Nombre = nombre;
             PeriodoActualizacion = periodoActualizacion;
+            this.regionVitivinicola = regionVitivinicola;
         }
 
         #region [Métodos]
