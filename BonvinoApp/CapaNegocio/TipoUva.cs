@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BonvinoApp.CapaNegocio
-{   
+{
     public class TipoUva
     {
         public string Nombre { get; set; }

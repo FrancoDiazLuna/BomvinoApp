@@ -29,11 +29,11 @@ namespace BonvinoApp.CapaNegocio
         /// </summary>
         /// <param name="descripcion"></param>
         /// <param name="porcentaje"></param>
-        public Varietal(string descripcion, float porcentaje,TipoUva tipoUva)
+        public Varietal(string descripcion, float porcentaje, TipoUva tipoUva)
         {
             Descripcion = descripcion;
             Porcentaje = porcentaje;
-            TipoUva = tipoUva;
+            this.tipoUva = tipoUva;
         }
 
 
