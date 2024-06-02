@@ -9,8 +9,46 @@ namespace BonvinoApp.CapaDatos
 {
     class generalDAC
     {
+        public static Pais pais = new Pais("Argentina");
+
+        public static Provincia provincia1 = new Provincia("Mendoza", pais);
+        public static Provincia provincia2 = new Provincia("San Juan", pais);
+        public static Provincia provincia3 = new Provincia("La Rioja", pais);
+        public static Provincia provincia4 = new Provincia("Salta", pais);
+        public static Provincia provincia5 = new Provincia("Neuquén", pais);
+        public static Provincia provincia6 = new Provincia("Rio Negro", pais);
+        public static Provincia provincia7 = new Provincia("Catamarca", pais);
+        public static Provincia provincia8 = new Provincia("Tucumán", pais);
+        public static Provincia provincia9 = new Provincia("Córdoba", pais);
+        public static Provincia provincia10 = new Provincia("Jujuy", pais);
 
 
+        public static RegionVitivinicola region1 = new RegionVitivinicola("Mendoza", provincia1 , "Región vitivinícola más importante de Argentina.");
+        public static RegionVitivinicola region2 = new RegionVitivinicola("San Juan", provincia2, "Segunda región vitivinícola más importante.");
+        public static RegionVitivinicola region3 = new RegionVitivinicola("La Rioja", provincia3, "Región con gran tradición vitivinícola.");
+        public static RegionVitivinicola region4 = new RegionVitivinicola("Salta", provincia4, "Conocida por sus viñedos de altura.");
+        public static RegionVitivinicola region5 = new RegionVitivinicola("Neuquén", provincia5, "Emergente en la producción de vinos de calidad.");
+        
+        public static RegionVitivinicola region6 = new RegionVitivinicola("Río Negro", provincia6, "Importante en la Patagonia.");
+        public static RegionVitivinicola region7 = new RegionVitivinicola("Catamarca", provincia7, "Conocida por su producción de vinos artesanales.");
+        public static RegionVitivinicola region8 = new RegionVitivinicola("Tucumán", provincia8, "Pequeña pero de gran calidad.");
+        public static RegionVitivinicola region9 = new RegionVitivinicola("Córdoba", provincia9, "Creciente en la producción de vinos.");
+        public static RegionVitivinicola region10 = new RegionVitivinicola("Jujuy", provincia10, "Región emergente en la vitivinicultura.");
+
+        public static Bodega bodega1 = new Bodega("-32.889, -68.845", "Bodega centenaria", "Fundada en 1900", "Bodega Norton", 12, region1);
+        public static Bodega bodega2 = new Bodega("-32.831, -68.929", "Bodega familiar", "Tradición desde 1925", "Bodega Catena Zapata", 6, region1);
+        public static Bodega bodega3 = new Bodega("-31.533, -68.522", "Innovadora en vinos tintos", "Establecida en 1980", "Bodega Graffigna", 3, region2);
+        public static Bodega bodega4 = new Bodega("-31.537, -68.526", "Famosa por su Torrontés", "Desde 1975", "Bodega Callia", 12, region2);
+        public static Bodega bodega5 = new Bodega("-29.413, -66.856", "Reconocida por sus Malbecs", "Desde 1950", "Bodega La Riojana", 6, region3);
+        public static Bodega bodega6 = new Bodega("-29.420, -66.870", "Pequeña bodega artesanal", "Desde 1985", "Bodega San Huberto", 12, region3);
+        public static Bodega bodega7 = new Bodega("-24.787, -65.410", "Viñedos a gran altitud", "Fundada en 1892", "Bodega El Porvenir", 6, region4);
+        public static Bodega bodega8 = new Bodega("-24.789, -65.405", "Conocida por sus vinos blancos", "Desde 1940", "Bodega Colomé", 3, region4);
+        public static Bodega bodega9 = new Bodega("-38.948, -68.058", "Joven y moderna", "Desde 2000", "Bodega del Fin del Mundo", 12, region5);
+        public static Bodega bodega10 = new Bodega("-39.024, -68.245", "Innovadora en la Patagonia", "Desde 1999", "Bodega Patritti", 6, region5);
+
+
+
+        /*
         public static Bodega bodega1 = new Bodega("34.052235, -118.243683", "Almacén central en Los Ángeles", "Fundada en 1920, sirvió como el principal almacén de la ciudad.", "Central LA", 5000);
         public static Bodega bodega2 = new Bodega("40.712776, -74.005974", "Bodega en Nueva York", "Establecida en 1898, es uno de los almacenes más antiguos de la ciudad.", "NY Warehouse", 10000);
         public static Bodega bodega3 = new Bodega("37.774929, -122.419418", "Almacén en San Francisco", "Inaugurada en 1950, ha sido clave en la distribución de productos en la bahía.", "SF Storage", 7500);
@@ -21,6 +59,7 @@ namespace BonvinoApp.CapaDatos
         public static Bodega bodega8 = new Bodega("55.755825, 37.617298", "Depósito en Moscú", "Un almacén histórico que data de la era soviética.", "Moscow Storage", 6500);
         public static Bodega bodega9 = new Bodega("52.520008, 13.404954", "Almacén en Berlín", "Reconstruido después de la guerra, es un símbolo de resiliencia.", "Berlin Depot", 8500);
         public static Bodega bodega10 = new Bodega("-23.550520, -46.633308", "Bodega en São Paulo", "Establecida en 1990, es la más grande en América del Sur.", "São Paulo Warehouse", 9500);
+        */
 
         public static TipoUva tipoUva1 = new TipoUva("Cabernet Sauvignon", "Uva tinta de origen francés, muy popular en la producción de vinos tintos");
         public static TipoUva tipoUva2 = new TipoUva("Chardonnay", "Uva blanca originaria de la región de Borgoña, utilizada en la producción de vinos blancos");
@@ -44,6 +83,7 @@ namespace BonvinoApp.CapaDatos
         public static Varietal varietal9 = new Varietal("Riesling", 1.0f, tipoUva9);
         public static Varietal varietal10 = new Varietal("Grenache", 1.0f, tipoUva10);
 
+        /*
         public static Pais pais1 = new Pais("Argentina");
         public static Pais pais2 = new Pais("Brasil");
         public static Pais pais3 = new Pais("Chile");
@@ -53,21 +93,21 @@ namespace BonvinoApp.CapaDatos
         public static Pais pais7 = new Pais("Perú");
         public static Pais pais8 = new Pais("Colombia");
         public static Pais pais9 = new Pais("Venezuela");
-        public static Pais pais10 = new Pais("Ecuador");
+        public static Pais pais10 = new Pais("Ecuador");*/
 
         public List<Vino> returnVinos()
         {
             List<Vino> listaVinos = new List<Vino>();
 
-            listaVinos.Add(new Vino("ImagenEtiqueta1", 2000, "VinoMiSuegra", "1.0", 1.5f, crearListaVarietales(), crearListaReseña(), bodega1));
-            listaVinos.Add(new Vino("ImagenEtiqueta2", 2000, "VinoMiSuegra2", "2.0", 2.5f, crearListaVarietales(), crearListaReseña(), bodega2));
-            listaVinos.Add(new Vino("ImagenEtiqueta3", 2000, "VinoMiSuegra3", "3.0", 3.5f, crearListaVarietales(), crearListaReseña(), bodega3));
-            listaVinos.Add(new Vino("ImagenEtiqueta4", 2000, "VinoMiSuegra4", "4.0", 4.5f, crearListaVarietales(), crearListaReseña(), bodega4));
-            listaVinos.Add(new Vino("ImagenEtiqueta5", 2000, "VinoMiSuegra5", "5.0", 5.5f, crearListaVarietales(), crearListaReseña(), bodega5));
-            listaVinos.Add(new Vino("ImagenEtiqueta6", 2000, "VinoMiSuegra6", "6.0", 6.5f, crearListaVarietales(), crearListaReseña(), bodega6));
-            listaVinos.Add(new Vino("ImagenEtiqueta7", 2000, "VinoMiSuegra7", "7.0", 7.5f, crearListaVarietales(), crearListaReseña(), bodega7));
-            listaVinos.Add(new Vino("ImagenEtiqueta8", 2000, "VinoMiSuegra8", "8.0", 8.5f, crearListaVarietales(), crearListaReseña(), bodega8));
-            listaVinos.Add(new Vino("ImagenEtiqueta9", 2000, "VinoMiSuegra9", "9.0", 9.5f, crearListaVarietales(), crearListaReseña(), bodega9));
+            listaVinos.Add(new Vino("ImagenEtiqueta1", 2018, "Catena Zapata Malbec Argentino", "Vista: Color púrpura intenso con reflejos violáceos.\r\nNariz: Aromas complejos de frutos negros maduros, como moras y ciruelas, con notas de violeta, especias y toques de roble francés.\r\nBoca: En boca es estructurado, con taninos firmes pero sedosos, equilibrado, con sabores de frutas negras, chocolate y un toque mineral. Final largo y persistente.\r\n", 1.5f, crearListaVarietales(), crearListaReseña(), bodega1));
+            listaVinos.Add(new Vino("ImagenEtiqueta2", 2019, "Norton Reserva Malbec", "Vista: Rojo rubí profundo.\r\nNariz: Aromas de frutas rojas maduras, ciruelas y moras, con sutiles notas de especias y vainilla.\r\nBoca: En boca es jugoso y bien balanceado, con taninos suaves y redondos. Sabores de frutos rojos, chocolate y un leve toque de roble. Final agradable y persistente.", 2.5f, crearListaVarietales(), crearListaReseña(), bodega2));
+            listaVinos.Add(new Vino("ImagenEtiqueta3", 2017, "Luigi Bosca De Sangre Cabernet Sauvignon", "Vista: Rojo granate intenso.\r\nNariz: Aromas de frutas negras maduras, como cassis y ciruelas, acompañados de notas de pimienta negra, tabaco y cacao.\r\nBoca: Cuerpo robusto con taninos firmes y bien integrados. Sabores de frutas negras, especias y un toque ahumado. Final largo y elegante.", 3.5f, crearListaVarietales(), crearListaReseña(), bodega3));
+            listaVinos.Add(new Vino("ImagenEtiqueta4", 2018, "Trapiche Iscay Malbec-Cabernet Franc", "Vista: Color rojo profundo con matices violetas.\r\nNariz: Aromas intensos de frutos rojos y negros, con notas florales de violeta y toques de hierbas y especias.\r\nBoca: En boca es complejo y elegante, con taninos maduros y una acidez equilibrada. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 4.5f, crearListaVarietales(), crearListaReseña(), bodega4));
+            listaVinos.Add(new Vino("ImagenEtiqueta5", 2019, "El Enemigo Chardonnay", "Vista: Color dorado brillante.\r\nNariz: Aromas de frutas tropicales, como piña y mango, con notas cítricas, vainilla y un toque de mantequilla.\r\nBoca: En boca es fresco y cremoso, con una buena acidez que equilibra los sabores de frutas tropicales, cítricos y un suave toque de roble. Final largo y refrescante.", 5.5f, crearListaVarietales(), crearListaReseña(), bodega5));
+            listaVinos.Add(new Vino("ImagenEtiqueta6", 2016, "Achaval Ferrer Finca Altamira Malbec", "Vista: Color púrpura intenso.\r\nNariz: Aromas profundos de frutas negras, como moras y arándanos, con notas florales de violeta, especias y un toque mineral.\r\nBoca: En boca es potente y elegante, con taninos firmes y bien estructurados. Sabores de frutas negras, especias y un toque terroso. Final largo y complejo.", 6.5f, crearListaVarietales(), crearListaReseña(), bodega6));
+            listaVinos.Add(new Vino("ImagenEtiqueta7", 2020, "Susana Balbo Signature Torrontés", "Vista: Color amarillo pálido con reflejos verdosos.\r\nNariz: Aromas intensos de flores blancas, como jazmín y azahar, con notas cítricas y de frutas tropicales.\r\nBoca: En boca es fresco y vibrante, con una acidez equilibrada. Sabores de frutas cítricas, durazno y un toque de especias. Final largo y aromático.", 7.5f, crearListaVarietales(), crearListaReseña(), bodega7));
+            listaVinos.Add(new Vino("ImagenEtiqueta8", 2018, "Bodega Colomé Auténtico Malbec", "Vista: Rojo profundo con tonos violetas.\r\nNariz: Aromas intensos de frutas rojas y negras, como ciruelas y moras, con notas florales y de especias.\r\nBoca: En boca es concentrado y potente, con taninos firmes y bien integrados. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 8.5f, crearListaVarietales(), crearListaReseña(), bodega8));
+            listaVinos.Add(new Vino("ImagenEtiqueta9", 2017, "Rutini Apartado Gran Malbec", "Vista: Rojo oscuro con reflejos violáceos.\r\nNariz: Aromas complejos de frutas negras, como moras y ciruelas, con notas de chocolate, vainilla y especias.\r\nBoca: En boca es robusto y bien estructurado, con taninos maduros y una acidez equilibrada. Sabores de frutas negras, chocolate y un toque de roble. Final largo y elegante.", 9.5f, crearListaVarietales(), crearListaReseña(), bodega9));
 
             return listaVinos;
         }
