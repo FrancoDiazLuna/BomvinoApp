@@ -39,11 +39,18 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        public void conocerTipoUva() { }
+        //REVISAR   
+        public string conocerTipoUva() 
+        {
+            return TipoUva.Nombre + ", "+TipoUva.Descripcion;
+
+        }
 
         public void esDeTipoUva() { }
 
         public void mostrarPorcentaje() { }
+
+        public string getDescripcion() {  return "descrip"; }
 
         #endregion
     }

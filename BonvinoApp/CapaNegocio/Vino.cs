@@ -11,7 +11,7 @@ namespace BonvinoApp.CapaNegocio
         private int añada;
         private string nombre;
         private string notaDeCataBodega;
-        private float precioARS;
+        private float precio;
         private List<Varietal> varietal;
         private Bodega bodega;
         private List<Reseña> reseñas;
@@ -25,7 +25,7 @@ namespace BonvinoApp.CapaNegocio
         public string ImagenEtiqueta { get => imagenEtiqueta; set => imagenEtiqueta = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string NotaDeCataBodega { get => notaDeCataBodega; set => notaDeCataBodega = value; }
-        public float Precio { get => precioARS; set => precioARS = value; }
+        public float Precio { get => precio; set => precio = value; }
         public List<Reseña> Reseñas { get => reseñas; set => reseñas = value; }
         public List<Varietal> Varietal { get => varietal; set => varietal = value; }
         public Bodega Bodega { get => bodega; set => bodega = value; }
@@ -75,9 +75,11 @@ namespace BonvinoApp.CapaNegocio
         /// <summary>
         /// Busca información del varietal.
         /// </summary>
-        public void buscarVarietal()
+        
+        //A CHEKIAR
+        public string buscarVarietal()
         {
-            // Lógica para buscar información del varietal
+            return Varietal.getDescripcion();
         }
 
         /// <summary>
