@@ -7,40 +7,43 @@ namespace BonvinoApp.CapaNegocio
     {
         #region [Atributos]
 
-        private string _añadaImagenEtiqueta;
-        private string _nombre;
-        private string _notaDeCataBodega; //esto es una descripcion
-        private float _precioARS;
-        private List<Varietal> _varietal;
-        private Bodega _bodega;
-        private List<Reseña> _reseñas;
+        private string imagenEtiqueta;
+        private int añada;
+        private string nombre;
+        private string notaDeCataBodega;
+        private float precioARS;
+        private List<Varietal> varietal;
+        private Bodega bodega;
+        private List<Reseña> reseñas;
 
-        private List<Reseña> _reseñasFiltradas;
+        private List<Reseña> reseñasFiltradas;
 
         #endregion
 
         #region [Métodos get y set]
 
-        public string AñadaImagenEtiqueta { get => _añadaImagenEtiqueta; set => _añadaImagenEtiqueta = value; }
-        public string Nombre { get => _nombre; set => _nombre = value; }
-        public string NotaDeCataBodega { get => _notaDeCataBodega; set => _notaDeCataBodega = value; }
-        public float Precio { get => _precioARS; set => _precioARS = value; }
-        public List<Reseña> Reseñas { get => _reseñas; set => _reseñas = value; }
-        public List<Varietal> Varietal { get => _varietal; set => _varietal = value; }
-        public Bodega Bodega { get => _bodega; set => _bodega = value; }
+        public string ImagenEtiqueta { get => imagenEtiqueta; set => imagenEtiqueta = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string NotaDeCataBodega { get => notaDeCataBodega; set => notaDeCataBodega = value; }
+        public float Precio { get => precioARS; set => precioARS = value; }
+        public List<Reseña> Reseñas { get => reseñas; set => reseñas = value; }
+        public List<Varietal> Varietal { get => varietal; set => varietal = value; }
+        public Bodega Bodega { get => bodega; set => bodega = value; }
+        public int Añada { get => añada; set => añada = value; }
 
         #endregion
 
         /// <summary>
         /// Constructor de la clase Vino
         /// </summary>
-        /// <param name="añadaImagenEtiqueta"></param>
+        /// <param name="imagenEtiqueta"></param>
         /// <param name="nombre"></param>
         /// <param name="notaDeCataBodega"></param>
         /// <param name="precio"></param>
-        public Vino(string añadaImagenEtiqueta, string nombre, string notaDeCataBodega, float precio, List<Varietal> varietales, List<Reseña> reseñas, Bodega bodega)
+        public Vino(string imagenEtiqueta, int añada, string nombre, string notaDeCataBodega, float precio, List<Varietal> varietales, List<Reseña> reseñas, Bodega bodega)
         {
-            AñadaImagenEtiqueta = añadaImagenEtiqueta;
+            ImagenEtiqueta = imagenEtiqueta;
+            Añada = añada;
             Nombre = nombre;
             NotaDeCataBodega = notaDeCataBodega;
             Precio = precio;
@@ -57,34 +60,16 @@ namespace BonvinoApp.CapaNegocio
         {
             bool response = false;
 
-            foreach (Reseña reseña in _reseñas)
+            foreach (Reseña reseña in reseñas)
             {
                 if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
                 {
                     response = true;
-                    break; // Salir del bucle interno ya que encontramos una reseña que cumple con las condiciones
+                    break;
                 }
             }           
 
             return response;
-        }
-
-        /// <summary>
-        /// Obtiene el nombre del vino.
-        /// </summary>
-        /// <returns>Nombre del vino</returns>
-        public string getNombre()
-        {
-            return Nombre;
-        }
-
-        /// <summary>
-        /// Obtiene el precio del vino.
-        /// </summary>
-        /// <returns>Precio del vino</returns>
-        public float getPrecio()
-        {
-            return Precio;
         }
 
         /// <summary>
@@ -102,7 +87,7 @@ namespace BonvinoApp.CapaNegocio
         {
             List<float> puntajes = new List<float>();
 
-            foreach (Reseña reseña in _reseñas)
+            foreach (Reseña reseña in reseñas)
             {
                 if (reseña.sosDePeriodo(fechaDesde, fechaHasta) && reseña.sosDeSommelier())
                 {

@@ -8,18 +8,18 @@ namespace BonvinoApp.CapaPresentacion.Forms
     {
         #region [Atributos]
 
-        private GestorGeneracionRankingVino _gestorRankingVinos;
-        private DateTime _fechaDesde;
-        private DateTime _fechaHasta;
-        private int _tipoReseñaSeleccionada;
-        private int _tipoVisualizacionSeleccionada;
+        private GestorGeneracionRankingVino gestorRankingVinos;
+        private DateTime fechaDesde;
+        private DateTime fechaHasta;
+        private int tipoReseñaSeleccionada;
+        private int tipoVisualizacionSeleccionada;
 
         #endregion
 
         public PantallaGenerarRankingVino()
         {
             habilitarPantalla();
-            _gestorRankingVinos = new GestorGeneracionRankingVino(this);
+            gestorRankingVinos = new GestorGeneracionRankingVino(this);
         }
 
         #region [Métodos]
@@ -42,14 +42,14 @@ namespace BonvinoApp.CapaPresentacion.Forms
 
         private void btnSeleccionarFechas_Click(object sender, EventArgs e)
         {
-            _fechaDesde = dtpFechaDesde.Value;
-            _fechaHasta = dtpFechaHasta.Value;
+            fechaDesde = dtpFechaDesde.Value;
+            fechaHasta = dtpFechaHasta.Value;
 
             bool response = false;
 
-            if (validarPeriodo(_fechaDesde, _fechaHasta))
+            if (validarPeriodo(fechaDesde, fechaHasta))
             {
-                response = _gestorRankingVinos.tomarFechaDesdeHasta(_fechaDesde, _fechaHasta);
+                response = gestorRankingVinos.tomarFechaDesdeHasta(fechaDesde, fechaHasta);
 
                 if (!response)
                 {
@@ -87,8 +87,8 @@ namespace BonvinoApp.CapaPresentacion.Forms
 
         private void btnTipoReseña_Click(object sender, EventArgs e)
         {            
-            _tipoReseñaSeleccionada = cmbTipoReseña.SelectedIndex;
-            _gestorRankingVinos.tomarTipoReseña(_tipoReseñaSeleccionada);
+            tipoReseñaSeleccionada = cmbTipoReseña.SelectedIndex;
+            gestorRankingVinos.tomarTipoReseña(tipoReseñaSeleccionada);
         }
 
         public void solicitarSeleccionFormaVisualizacion()
@@ -100,21 +100,21 @@ namespace BonvinoApp.CapaPresentacion.Forms
         {
             if (rbtExcel.Checked)
             {
-                _tipoVisualizacionSeleccionada = 1;//"Excel";
+                tipoVisualizacionSeleccionada = 1;//"Excel";
                 MessageBox.Show("Seleccinado Excel.");
-                _gestorRankingVinos.tomarSeleccionFormaVisualizacion(_tipoVisualizacionSeleccionada);
+                gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
             }
             else if (rbtPDF.Checked)
             {
-                _tipoVisualizacionSeleccionada = 2;// "PDF";
+                tipoVisualizacionSeleccionada = 2;// "PDF";
                 MessageBox.Show("Seleccinado PDF.");
-                _gestorRankingVinos.tomarSeleccionFormaVisualizacion(_tipoVisualizacionSeleccionada);
+                gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
             }
             else if (rbtPantalla.Checked)
             {
-                _tipoVisualizacionSeleccionada = 3;// "Pantalla";
+                tipoVisualizacionSeleccionada = 3;// "Pantalla";
                 MessageBox.Show("Seleccinado Pantalla.");
-                _gestorRankingVinos.tomarSeleccionFormaVisualizacion(_tipoVisualizacionSeleccionada);
+                gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
             }
             else
             {
@@ -129,18 +129,18 @@ namespace BonvinoApp.CapaPresentacion.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            _gestorRankingVinos.tomarConfirmacionGeneracionReporte(true);
+            gestorRankingVinos.tomarConfirmacionGeneracionReporte(true);
         }
 
         public void informarGeneracionExitosaDeReporte()
         {
             MessageBox.Show("Se ha generado exitosamente su reporte.");
-            _gestorRankingVinos.finCU();
+            gestorRankingVinos.finCU();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            _gestorRankingVinos.finCU();
+            gestorRankingVinos.finCU();
         }
 
         /// <summary>

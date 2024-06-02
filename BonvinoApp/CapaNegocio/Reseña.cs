@@ -14,7 +14,6 @@ namespace BonvinoApp.CapaNegocio
         private bool esPremium;
         private DateTime fechaReseña;
         private float puntaje;
-        private TipoReseña tipoReseña;
         private Vino vino;
 
         #endregion
@@ -25,39 +24,37 @@ namespace BonvinoApp.CapaNegocio
         public bool EsPremium { get => esPremium; set => esPremium = value; }
         public DateTime FechaReseña { get => fechaReseña; set => fechaReseña = value; }
         public float Puntaje { get => puntaje; set => puntaje = value; }
-        internal TipoReseña TipoReseña { get => tipoReseña; set => tipoReseña = value; }
+        internal Vino Vino { get => vino; set => vino = value; }
 
         #endregion
 
         /// <summary>
-        /// Constructor de la clase TipoReseña
+        /// Constructor de la clase Reseña
         /// </summary>
         /// <param name="comentario"></param>
         /// <param name="esPremium"></param>
         /// <param name="fechaReseña"></param>
         /// <param name="puntaje"></param>
-        public Reseña(string comentario, bool esPremium, DateTime fechaReseña, float puntaje)
+        /// <param name="vino"></param>
+        public Reseña(string comentario, bool esPremium, DateTime fechaReseña, float puntaje, Vino vino)
         {
             Comentario = comentario;
             EsPremium = esPremium;
             FechaReseña = fechaReseña;
             Puntaje = puntaje;
+            Vino = vino;
         }
 
         #region [Métodos]
 
-        //métodos propios de la clase
-        private bool sosDePeriodo(DateTime fechaDesde, DateTime fechaHasta) {
+        public bool sosDePeriodo(DateTime fechaDesde, DateTime fechaHasta) {
             return FechaReseña >= fechaDesde && FechaReseña <= fechaHasta;
         }
 
-    
-        private bool sosDeSommelier() 
+        public bool sosDeSommelier() 
         {
-            return esPremium
+            return esPremium;
         }
-        private float getPje() { }
-
 
         #endregion
     }

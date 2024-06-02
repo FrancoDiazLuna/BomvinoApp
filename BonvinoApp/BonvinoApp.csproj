@@ -48,13 +48,12 @@
   <ItemGroup>
     <Compile Include="CapaDatos\generalDAC.cs" />
     <Compile Include="CapaNegocio\Bodega.cs" />
-    <Compile Include="CapaNegocio\Enofilo.cs" />
+    <Compile Include="CapaNegocio\DatosVisualizacion.cs" />
     <Compile Include="CapaNegocio\GestorGeneracionRankingVino.cs" />
     <Compile Include="CapaNegocio\Pais.cs" />
     <Compile Include="CapaNegocio\Provincia.cs" />
     <Compile Include="CapaNegocio\RegionVitivinicola.cs" />
     <Compile Include="CapaNegocio\Reseña.cs" />
-    <Compile Include="CapaNegocio\TipoReseña.cs" />
     <Compile Include="CapaNegocio\TipoUva.cs" />
     <Compile Include="CapaNegocio\Varietal.cs" />
     <Compile Include="CapaNegocio\Vino.cs" />

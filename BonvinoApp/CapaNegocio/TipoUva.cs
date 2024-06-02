@@ -8,16 +8,28 @@ namespace BonvinoApp.CapaNegocio
 {
     public class TipoUva
     {
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
+        #region [Atributos]
 
-        // Constructor
+        private string nombre;
+        private string descripcion;
+
+        #endregion
+
+        #region [Métodos get y set]
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Descripcion { get => descripcion; set => descripcion = value; }
+
+        #endregion
+
+        /// <summary>
+        /// Constructor de la clase TipoUva
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="descripcion"></param>
         public TipoUva(string nombre, string descripcion)
         {
             Nombre = nombre;
             Descripcion = descripcion;
         }
     }
-
-
 }
