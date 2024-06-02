@@ -11,9 +11,8 @@ namespace BonvinoApp.CapaNegocio
         #region [Atributos]
 
         private string nombre;
-        private Bodega bodega;
-        private Provincia provincia;
         private string descripcion;
+        private Provincia provincia;
 
         #endregion
 
@@ -28,23 +27,22 @@ namespace BonvinoApp.CapaNegocio
         /// Constructor de la clase RegionVitivinicola
         /// </summary>
         /// <param name="nombre"></param>
+        /// <param name="provincia"></param>
+        /// <param name="descripcion"></param>
         public RegionVitivinicola(string nombre, Provincia provincia, string descripcion)
         {
             Nombre = nombre;
-            Provincia = provincia;
             Descripcion = descripcion;
+            Provincia = provincia;
         }
 
 
         #region [Métodos]
 
-        //métodos propios de la clase
-
         private string getNombre()
         {
             return Nombre;
         }
-
 
         private string obtenerPais(RegionVitivinicola region)
         { 

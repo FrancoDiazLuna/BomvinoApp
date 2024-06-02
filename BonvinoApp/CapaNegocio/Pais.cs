@@ -35,8 +35,6 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        //métodos propios de la clase
-
         private string getNombre()
         {
             return Nombre;

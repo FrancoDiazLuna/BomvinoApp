@@ -2,6 +2,8 @@
 using BonvinoApp.CapaPresentacion.Forms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 
 namespace BonvinoApp.CapaNegocio.Gestores
 {
@@ -9,44 +11,46 @@ namespace BonvinoApp.CapaNegocio.Gestores
     {
         #region [Atributos]
 
-        private PantallaGenerarRankingVino _pantallaGenerarRankingVino;
-        private List<Vino> _listaVinos;
-        private DateTime _fechaDesde;
-        private DateTime _fechaHasta;
-        private string _tipoReseñaSeleccionada;
-        private string _tipoVisualizacionSeleccionada;
-        private List<Vino> _listaVinosFiltradosPeriodoSomelier;
+        private PantallaGenerarRankingVino pantallaGenerarRankingVino;
+        private List<Vino> listaVinos;
+        private DateTime fechaDesde;
+        private DateTime fechaHasta;
+        private string tipoReseñaSeleccionada;
+        private string tipoVisualizacionSeleccionada;
+        private List<Vino> listaVinosFiltradosPeriodoSomelier;
+        
+        private List<DatosVisualizacion> datos = new List<DatosVisualizacion>();
 
         #endregion
 
         #region [Métodos get y set]
 
-        public DateTime FechaDesde { get => _fechaDesde; set => _fechaDesde = value; }
-        public DateTime FechaHasta { get => _fechaHasta; set => _fechaHasta = value; }
+        public DateTime FechaDesde { get => fechaDesde; set => fechaDesde = value; }
+        public DateTime FechaHasta { get => fechaHasta; set => fechaHasta = value; }
 
         #endregion
 
         public GestorGeneracionRankingVino(PantallaGenerarRankingVino pantallaGenerarRankingVino)
         {
-            this._pantallaGenerarRankingVino = pantallaGenerarRankingVino;
+            this.pantallaGenerarRankingVino = pantallaGenerarRankingVino;
             generalDAC general = new generalDAC();
 
-            _listaVinos = general.returnVinos();
+            listaVinos = general.returnVinos();
         }
 
         #region [Métodos]
 
         public void generarRankingVinos()
         {
-            _pantallaGenerarRankingVino.solicitarFechaDesdeHasta();
+            pantallaGenerarRankingVino.solicitarFechaDesdeHasta();
         }
 
         public bool tomarFechaDesdeHasta(DateTime fechaDesde, DateTime fechaHasta)
         {
-            this._fechaDesde = fechaDesde;
-            this._fechaHasta = fechaHasta;
+            this.fechaDesde = fechaDesde;
+            this.fechaHasta = fechaHasta;
 
-            _pantallaGenerarRankingVino.solicitarTipoReseña();
+            pantallaGenerarRankingVino.solicitarTipoReseña();
 
             return true;
         }
@@ -62,8 +66,8 @@ namespace BonvinoApp.CapaNegocio.Gestores
 
             if (formatos.TryGetValue(tipoReseñaSeleccionada, out var formato))
             {
-                _tipoReseñaSeleccionada = formato;
-                _pantallaGenerarRankingVino.solicitarSeleccionFormaVisualizacion();
+                this.tipoReseñaSeleccionada = formato;
+                pantallaGenerarRankingVino.solicitarSeleccionFormaVisualizacion();
             }
             else
             {
@@ -83,8 +87,8 @@ namespace BonvinoApp.CapaNegocio.Gestores
 
             if (formatos.TryGetValue(formatoSeleccionado, out var formato))
             {
-                _tipoVisualizacionSeleccionada = formato;
-                _pantallaGenerarRankingVino.solicitarConfirmacionGeneracionReporte();
+                tipoVisualizacionSeleccionada = formato;
+                pantallaGenerarRankingVino.solicitarConfirmacionGeneracionReporte();
             } else
             {
                 // Manejar el caso de formato no válido si es necesario
@@ -98,65 +102,87 @@ namespace BonvinoApp.CapaNegocio.Gestores
             {
                 buscarVinosConReseñaEnPeriodo(FechaDesde, FechaHasta);
                 calcularPromedioCalificacion();
-                ordenarVinosSegunCalificacion();
-                //generarVisualizacion();
+                List<DatosVisualizacion> datos = ordenarVinosSegunCalificacion();
+                generarVisualizacionDeReporte(tipoVisualizacionSeleccionada,datos);
             }
         }
 
         private void buscarVinosConReseñaEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
-            foreach (Vino vino in _listaVinos)
+            foreach (Vino vino in listaVinos)
             {
                 if (vino.tenesReseñasDeTipoEnPeriodo(fechaDesde, fechaHasta))
                 {
-                    _listaVinosFiltradosPeriodoSomelier.Add(vino);
+                    listaVinosFiltradosPeriodoSomelier.Add(vino);
                 }
-
-                //Segun el diagrama, tenemos que buscar esta informacion de cada vino que cumpla con
-                //el filtro anterior:
-                //
-                //var nombre = vino.Nombre;
-                //var precio = vino.Precio;
-                //var bodega = vino.buscarInfoBodega();
-                //var varietal = vino.BuscarVarietal();
-                //
-                // si hacemos esto aca, como en el 1er diagrama de secuencia, tenemos que implementar 
-                // un tipo de dato para almacenar toda esta informacion de cada uno de los vinos
             }
         }
 
-        //A este metodo le falta guardar el puntaje objetino de cada uno de los vinos en alguna
-        //estructura de datos, que podria ser la misma en la que guardamos los datos (nombre, precio, etc)
-        //de cada vino.
         private void calcularPromedioCalificacion()
         {
-            float puntaje;
-            foreach (Vino vino in _listaVinosFiltradosPeriodoSomelier)
+            foreach (Vino vino in listaVinosFiltradosPeriodoSomelier)
             {
-                puntaje = vino.calcularPromedioCalificacion(FechaDesde, FechaHasta);
+                float puntaje = vino.calcularPromedioCalificacion(FechaDesde, FechaHasta);
+
+                datos.Add(new DatosVisualizacion(vino, puntaje));
             }
         }
 
-        private void ordenarVinosSegunCalificacion()
+        private List<DatosVisualizacion> ordenarVinosSegunCalificacion()
         {
-            //implementar un metodo de ordenamiento para ordenar todos los vinos segun el puntaje obtenido
+            datos.OrderByDescending(vino => vino.CalificacionSommelier);
+
+            List<DatosVisualizacion> top10 = datos.Take(10).ToList();
+
+            foreach (DatosVisualizacion dato in top10)
+            {
+                dato.Nombre = dato.Vino.Nombre;
+                dato.PrecioSugerido = dato.Vino.Precio;
+                dato.Bodega = dato.Vino.Bodega.Nombre;
+                //dato.Variertal = dato.Vino.Varietal.Nombre;
+                //dato.Region = dato.Vino.Bodega.RegionVitivinicola.Nombre;
+                //dato.Pais = dato.Vino.Bodega.RegionVitivinicola.Provincia.Pais.Nombre;
+            }
+            
+            return top10;
         }
 
-        //Acá hay que implementar un patron de creacion/generación de visualizacion
-        //por ej:
-        //private void generarVisualizacion(){
-        //  segun que se haya seleccionado, ejecuta alguno de los metodos de abajo
-        //  pero se puede mejorar implementado algun patro de diseño
-        //
-        //  _pantallaGenerarRankingVino.informarGeneracionExitosaDeReporte()
-        //}
-        //private void generarExcel() { }
-        //private void generarPDF() { }
-        //private void generarPantalla() { }
+        private void generarVisualizacionDeReporte(string visualizacion, List<DatosVisualizacion> datos)
+        {
+            switch (visualizacion)
+            {
+                case "Excel":
+                    generarExcel(datos);
+                    break;
+                case "PDF":
+                    generarPDF(datos);
+                    break;
+                case "Pantalla":
+                    generarPantalla(datos);
+                    break;                
+            }
+
+            pantallaGenerarRankingVino.informarGeneracionExitosaDeReporte();
+        }
+        private void generarExcel(List<DatosVisualizacion> datos) 
+        {
+            //implementar esto
+            //generarExcel
+        }
+        private void generarPDF(List<DatosVisualizacion> datos)
+        {
+            //implementar esto
+            //generar el PDF
+        }
+        private void generarPantalla(List<DatosVisualizacion> datos)
+        {
+            //implementar esto
+            //generar una instancia del Form VisualizacionPantalla
+        }
 
         public void finCU()
         {
-            _pantallaGenerarRankingVino.Close();
+            pantallaGenerarRankingVino.Close();
         }
 
         #endregion

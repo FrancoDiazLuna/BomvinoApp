@@ -39,7 +39,11 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        //métodos propios de la clase
+        public void conocerTipoUva() { }
+
+        public void esDeTipoUva() { }
+
+        public void mostrarPorcentaje() { }
 
         #endregion
     }
