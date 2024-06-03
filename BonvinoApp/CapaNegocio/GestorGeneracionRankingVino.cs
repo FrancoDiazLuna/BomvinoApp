@@ -1,4 +1,5 @@
 ﻿using BonvinoApp.CapaDatos;
+using BonvinoApp.CapaPresentacion;
 using BonvinoApp.CapaPresentacion.Forms;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,11 @@ namespace BonvinoApp.CapaNegocio.Gestores
         private string tipoReseñaSeleccionada;
         private string tipoVisualizacionSeleccionada;
         private List<Vino> listaVinosFiltradosPeriodoSomelier;
-        
+        private InterfazExcel interfazExcel;
+
         private Dictionary<Vino, float> vinosConPuntajes = new Dictionary<Vino, float>();
+        private List<String> top10Vino = new List<string>();
+        private InterfazPdf interfazPdf;
 
         #endregion
 
@@ -84,7 +88,8 @@ namespace BonvinoApp.CapaNegocio.Gestores
             {
                 tipoVisualizacionSeleccionada = formato;
                 pantallaGenerarRankingVino.solicitarConfirmacionGeneracionReporte();
-            } else
+            }
+            else
             {
                 // Manejar el caso de formato no válido si es necesario
                 throw new ArgumentOutOfRangeException(nameof(formatoSeleccionado), "Formato de Visualización no válido.");
@@ -94,7 +99,7 @@ namespace BonvinoApp.CapaNegocio.Gestores
         public bool tomarConfirmacionGeneracionReporte()
         {
             bool hayVinosConReseña = buscarVinosConReseñaEnPeriodo(FechaDesde, FechaHasta);
-            if (hayVinosConReseña)
+            if (!hayVinosConReseña)
             {
                 return false;
             }
@@ -108,6 +113,8 @@ namespace BonvinoApp.CapaNegocio.Gestores
 
         private bool buscarVinosConReseñaEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
+            listaVinosFiltradosPeriodoSomelier = new List<Vino>();
+
             foreach (Vino vino in listaVinos)
             {
                 if (vino.tenesReseñasDeTipoEnPeriodo(fechaDesde, fechaHasta))
@@ -159,37 +166,48 @@ namespace BonvinoApp.CapaNegocio.Gestores
                     break;
                 case "Pantalla":
                     generarPantalla(vinosConPuntajes);
-                    break;                
+                    break;
             }
 
             pantallaGenerarRankingVino.informarGeneracionExitosaDeReporte();
         }
-        private void generarExcel(Dictionary<Vino, float> top10) 
+        private void generarExcel(Dictionary<Vino, float> top10)
         {
-            //implementar esto
-            //generarExcel
+            interfazExcel = new InterfazExcel();
+            interfazExcel.generarExcel(top10);
         }
         private void generarPDF(Dictionary<Vino, float> top10)
         {
-            //implementar esto
-            //generar el PDF
+            interfazPdf = new InterfazPdf();
+            interfazPdf.generarPdf(top10);
         }
         private void generarPantalla(Dictionary<Vino, float> top10)
         {
             VisualizacionPantalla visualizacionPantalla = new VisualizacionPantalla();
-
+            int orden = 0;
+            string varietal = "";
             foreach (var vino in top10)
             {
-                //visualizacionPantalla.cargarDatosEnPantalla();
+                orden++;
+                string nombreVino = vino.Key.Nombre;
+                string calificacionSomelier = vino.Value.ToString();
+                string precioSugerido = vino.Key.Precio.ToString();
+                string bodega = vino.Key.Bodega.Nombre.ToString();
+                foreach (var nombreVarietal in vino.Key.Varietal)
+                {
+                    varietal += nombreVarietal.Descripcion + ",";
+                }
+                string regionVitivinicola = vino.Key.Bodega.RegionVitivinicola.Nombre;
+                string pais = vino.Key.Bodega.RegionVitivinicola.Provincia.Pais.Nombre;
+                visualizacionPantalla.cargarDatosEnPantalla(orden.ToString(), nombreVino, calificacionSomelier, precioSugerido, bodega, varietal, regionVitivinicola, pais);
             }
-            visualizacionPantalla.ShowDialog();
+            visualizacionPantalla.Show();
         }
 
         public void finCU()
         {
             pantallaGenerarRankingVino.Close();
         }
-
         #endregion
 
     }
