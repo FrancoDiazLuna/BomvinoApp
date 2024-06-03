@@ -173,15 +173,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CapaDatos\generalDAC.cs" />
-    <Compile Include="CapaNegocio\Bodega.cs" />
-    <Compile Include="CapaNegocio\GestorGeneracionRankingVino.cs" />
-    <Compile Include="CapaNegocio\Pais.cs" />
-    <Compile Include="CapaNegocio\Provincia.cs" />
-    <Compile Include="CapaNegocio\RegionVitivinicola.cs" />
-    <Compile Include="CapaNegocio\Reseña.cs" />
-    <Compile Include="CapaNegocio\TipoUva.cs" />
-    <Compile Include="CapaNegocio\Varietal.cs" />
-    <Compile Include="CapaNegocio\Vino.cs" />
+    <Compile Include="CapaNegocio\Entidad\Bodega.cs" />
+    <Compile Include="CapaNegocio\FabricaciónPura\Enum.cs" />
+    <Compile Include="CapaNegocio\FabricaciónPura\GestorGeneracionRankingVino.cs" />
+    <Compile Include="CapaNegocio\Entidad\Pais.cs" />
+    <Compile Include="CapaNegocio\Entidad\Provincia.cs" />
+    <Compile Include="CapaNegocio\Entidad\RegionVitivinicola.cs" />
+    <Compile Include="CapaNegocio\Entidad\Reseña.cs" />
+    <Compile Include="CapaNegocio\Entidad\TipoUva.cs" />
+    <Compile Include="CapaNegocio\Entidad\Varietal.cs" />
+    <Compile Include="CapaNegocio\Entidad\Vino.cs" />
     <Compile Include="CapaPresentacion\Forms\VisualizacionPantalla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,8 +201,8 @@
     <Compile Include="CapaPresentacion\Forms\PantallaGenerarRankingVino.Designer.cs">
       <DependentUpon>PantallaGenerarRankingVino.cs</DependentUpon>
     </Compile>
-    <Compile Include="CapaPresentacion\InterfazExcel.cs" />
-    <Compile Include="CapaPresentacion\InterfazPdf.cs" />
+    <Compile Include="CapaNegocio\FabricaciónPura\InterfazExcel.cs" />
+    <Compile Include="CapaNegocio\FabricaciónPura\InterfazPdf.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CapaPresentacion\Forms\MainWindow.resx">

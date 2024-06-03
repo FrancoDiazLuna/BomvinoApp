@@ -1,6 +1,6 @@
-﻿using BonvinoApp.CapaNegocio.Gestores;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using BonvinoApp.CapaNegocio.FabricaciónPura;
 
 namespace BonvinoApp.CapaPresentacion.Forms
 {
@@ -11,8 +11,8 @@ namespace BonvinoApp.CapaPresentacion.Forms
         private GestorGeneracionRankingVino gestorRankingVinos;
         private DateTime fechaDesde;
         private DateTime fechaHasta;
-        private int tipoReseñaSeleccionada;
-        private int tipoVisualizacionSeleccionada;
+        private TipoReseña tipoReseñaSeleccionada;
+        private TipoVisualizacion tipoVisualizacionSeleccionada;
 
         #endregion
 
@@ -78,18 +78,19 @@ namespace BonvinoApp.CapaPresentacion.Forms
         }
 
         private void btnTipoReseña_Click(object sender, EventArgs e)
-        {            
-            tipoReseñaSeleccionada = cmbTipoReseña.SelectedIndex;
-            if (tipoReseñaSeleccionada != -1)
+        {   
+            int tipoReseñaSeleccionadaIndex = cmbTipoReseña.SelectedIndex;
+
+            if (tipoReseñaSeleccionadaIndex >= 0 && tipoReseñaSeleccionadaIndex < Enum.GetNames(typeof(TipoReseña)).Length)
             {
-                gestorRankingVinos.tomarTipoReseña(tipoReseñaSeleccionada);
+                var tipoReseña = (TipoReseña)(tipoReseñaSeleccionadaIndex + 1);
+                gestorRankingVinos.tomarTipoReseña(tipoReseña);
             }
             else
             {
                 MessageBox.Show("Debe seleccionar un formato de visualización.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 limpiarCampos(false, false, true);
             }
-
         }
 
         public void solicitarSeleccionFormaVisualizacion()
@@ -101,22 +102,21 @@ namespace BonvinoApp.CapaPresentacion.Forms
         {
             if (rbtExcel.Checked)
             {
-                tipoVisualizacionSeleccionada = 1;//"Excel";
-                MessageBox.Show("Seleccinado Excel.");
-                gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
+                tipoVisualizacionSeleccionada = TipoVisualizacion.Excel;
+                MessageBox.Show("Seleccionado Excel.");
             }
             else if (rbtPDF.Checked)
             {
-                tipoVisualizacionSeleccionada = 2;// "PDF";
-                MessageBox.Show("Seleccinado PDF.");
-                gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
+                tipoVisualizacionSeleccionada = TipoVisualizacion.PDF;
+                MessageBox.Show("Seleccionado PDF.");
             }
             else if (rbtPantalla.Checked)
             {
-                tipoVisualizacionSeleccionada = 3;// "Pantalla";
-                MessageBox.Show("Seleccinado Pantalla.");
-                gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
+                tipoVisualizacionSeleccionada = TipoVisualizacion.Pantalla;
+                MessageBox.Show("Seleccionado Pantalla.");
             }
+
+            gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
         }
 
         public void solicitarConfirmacionGeneracionReporte()

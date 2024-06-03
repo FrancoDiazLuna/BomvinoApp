@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using BonvinoApp.CapaNegocio;
+﻿using System.Windows.Forms;
 
 namespace BonvinoApp.CapaPresentacion.Forms
 {

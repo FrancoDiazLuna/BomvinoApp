@@ -1,11 +1,10 @@
 ﻿using BonvinoApp.CapaDatos;
-using BonvinoApp.CapaPresentacion;
 using BonvinoApp.CapaPresentacion.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BonvinoApp.CapaNegocio.Gestores
+namespace BonvinoApp.CapaNegocio.FabricaciónPura
 {
     class GestorGeneracionRankingVino
     {
@@ -15,13 +14,12 @@ namespace BonvinoApp.CapaNegocio.Gestores
         private List<Vino> listaVinos;
         private DateTime fechaDesde;
         private DateTime fechaHasta;
-        private string tipoReseñaSeleccionada;
-        private string tipoVisualizacionSeleccionada;
+        private TipoReseña tipoReseñaSeleccionada;
+        private TipoVisualizacion tipoVisualizacionSeleccionada;
         private List<Vino> listaVinosFiltradosPeriodoSomelier;
-        private InterfazExcel interfazExcel;
 
         private Dictionary<Vino, float> vinosConPuntajes = new Dictionary<Vino, float>();
-        private List<String> top10Vino = new List<string>();
+        private InterfazExcel interfazExcel;
         private InterfazPdf interfazPdf;
 
         #endregion
@@ -54,52 +52,21 @@ namespace BonvinoApp.CapaNegocio.Gestores
             pantallaGenerarRankingVino.solicitarTipoReseña();
         }
 
-        public void tomarTipoReseña(int tipoReseñaSeleccionada)
+        public void tomarTipoReseña(TipoReseña tipoReseñaSeleccionada)
         {
-            var formatos = new Dictionary<int, string>
-            {
-                { 1, "Normal" },
-                { 2, "Sommelier" },
-                { 3, "Amigos" }
-            };
-
-            if (formatos.TryGetValue(tipoReseñaSeleccionada, out var formato))
-            {
-                this.tipoReseñaSeleccionada = formato;
-                pantallaGenerarRankingVino.solicitarSeleccionFormaVisualizacion();
-            }
-            else
-            {
-                // Manejar el caso de formato no válido si es necesario
-                throw new ArgumentOutOfRangeException(nameof(tipoReseñaSeleccionada), "Tipo de Reseña no válido.");
-            }
+            this.tipoReseñaSeleccionada = tipoReseñaSeleccionada;
+            pantallaGenerarRankingVino.solicitarSeleccionFormaVisualizacion();
         }
 
-        public void tomarSeleccionFormaVisualizacion(int formatoSeleccionado)
+        public void tomarSeleccionFormaVisualizacion(TipoVisualizacion tipoVisualizacionSeleccionada)
         {
-            var formatos = new Dictionary<int, string>
-            {
-                { 1, "Excel" },
-                { 2, "PDF" },
-                { 3, "Pantalla" }
-            };
-
-            if (formatos.TryGetValue(formatoSeleccionado, out var formato))
-            {
-                tipoVisualizacionSeleccionada = formato;
-                pantallaGenerarRankingVino.solicitarConfirmacionGeneracionReporte();
-            }
-            else
-            {
-                // Manejar el caso de formato no válido si es necesario
-                throw new ArgumentOutOfRangeException(nameof(formatoSeleccionado), "Formato de Visualización no válido.");
-            }
+            this.tipoVisualizacionSeleccionada = tipoVisualizacionSeleccionada;
+            pantallaGenerarRankingVino.solicitarConfirmacionGeneracionReporte();
         }
 
         public bool tomarConfirmacionGeneracionReporte()
         {
-            bool hayVinosConReseña = buscarVinosConReseñaEnPeriodo(FechaDesde, FechaHasta);
-            if (!hayVinosConReseña)
+            if (!buscarVinosConReseñaEnPeriodo(FechaDesde, FechaHasta))
             {
                 return false;
             }
@@ -123,12 +90,7 @@ namespace BonvinoApp.CapaNegocio.Gestores
                 }
             }
 
-            if (listaVinosFiltradosPeriodoSomelier == null || !listaVinosFiltradosPeriodoSomelier.Any())
-            {
-                return false;
-            }
-
-            return true;
+            return listaVinosFiltradosPeriodoSomelier.Any();
         }
 
         private void calcularPromedioCalificacion()
@@ -136,7 +98,6 @@ namespace BonvinoApp.CapaNegocio.Gestores
             foreach (Vino vino in listaVinosFiltradosPeriodoSomelier)
             {
                 float puntaje = vino.calcularPromedioCalificacion(FechaDesde, FechaHasta);
-
                 vinosConPuntajes[vino] = puntaje;
             }
         }
@@ -145,28 +106,27 @@ namespace BonvinoApp.CapaNegocio.Gestores
         {
             int top = 10;
 
-            var topVinos = vinosConPuntajes.OrderByDescending(vino => vino.Value).Take(top).ToList();
-
-            vinosConPuntajes.Clear();
-            foreach (var vino in topVinos)
-            {
-                vinosConPuntajes[vino.Key] = vino.Value;
-            }
+            vinosConPuntajes = vinosConPuntajes
+                        .OrderByDescending(vino => vino.Value)
+                        .Take(top)
+                        .ToDictionary(v => v.Key, v => v.Value);
         }
 
-        private void generarVisualizacionDeReporte(string visualizacion)
+        private void generarVisualizacionDeReporte(TipoVisualizacion visualizacion)
         {
             switch (visualizacion)
             {
-                case "Excel":
+                case TipoVisualizacion.Excel:
                     generarExcel(vinosConPuntajes);
                     break;
-                case "PDF":
+                case TipoVisualizacion.PDF:
                     generarPDF(vinosConPuntajes);
                     break;
-                case "Pantalla":
+                case TipoVisualizacion.Pantalla:
                     generarPantalla(vinosConPuntajes);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(visualizacion), "Tipo de Visualización no válido.");
             }
 
             pantallaGenerarRankingVino.informarGeneracionExitosaDeReporte();
@@ -184,11 +144,10 @@ namespace BonvinoApp.CapaNegocio.Gestores
         private void generarPantalla(Dictionary<Vino, float> top10)
         {
             VisualizacionPantalla visualizacionPantalla = new VisualizacionPantalla();
-            int orden = 0;
+            int orden = 1;
             string varietal = "";
             foreach (var vino in top10)
             {
-                orden++;
                 string nombreVino = vino.Key.Nombre;
                 string calificacionSomelier = vino.Value.ToString();
                 string precioSugerido = vino.Key.Precio.ToString();
@@ -200,6 +159,8 @@ namespace BonvinoApp.CapaNegocio.Gestores
                 string regionVitivinicola = vino.Key.Bodega.RegionVitivinicola.Nombre;
                 string pais = vino.Key.Bodega.RegionVitivinicola.Provincia.Pais.Nombre;
                 visualizacionPantalla.cargarDatosEnPantalla(orden.ToString(), nombreVino, calificacionSomelier, precioSugerido, bodega, varietal, regionVitivinicola, pais);
+                orden++;
+                varietal = "";
             }
             visualizacionPantalla.Show();
         }
@@ -208,7 +169,8 @@ namespace BonvinoApp.CapaNegocio.Gestores
         {
             pantallaGenerarRankingVino.Close();
         }
+
         #endregion
 
-    }
+    }   
 }

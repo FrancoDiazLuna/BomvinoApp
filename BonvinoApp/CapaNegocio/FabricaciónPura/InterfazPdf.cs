@@ -1,14 +1,12 @@
-﻿using BonvinoApp.CapaNegocio;
-using System.Collections.Generic;
-using PdfSharp.Drawing;
+﻿using System.Collections.Generic;
 using System.Linq;
+using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 
-namespace BonvinoApp.CapaPresentacion
+namespace BonvinoApp.CapaNegocio.FabricaciónPura
 {
     public class InterfazPdf
     {
-
         internal void generarPdf(Dictionary<Vino, float> data)
         {
             // Ruta del archivo PDF

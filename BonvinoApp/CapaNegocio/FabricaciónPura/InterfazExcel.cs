@@ -1,12 +1,7 @@
-﻿using BonvinoApp.CapaNegocio;
+﻿using System.Collections.Generic;
 using ClosedXML.Excel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BonvinoApp.CapaPresentacion
+namespace BonvinoApp.CapaNegocio.FabricaciónPura
 {
     public class InterfazExcel
     { 

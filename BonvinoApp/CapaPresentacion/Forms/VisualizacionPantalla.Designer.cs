@@ -43,6 +43,8 @@
             // 
             // dgvRankingVinos
             // 
+            this.dgvRankingVinos.AllowUserToAddRows = false;
+            this.dgvRankingVinos.AllowUserToDeleteRows = false;
             this.dgvRankingVinos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRankingVinos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ordenRanking,
@@ -53,9 +55,11 @@
             this.varietal,
             this.región,
             this.pais});
-            this.dgvRankingVinos.Location = new System.Drawing.Point(12, 12);
+            this.dgvRankingVinos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRankingVinos.Location = new System.Drawing.Point(0, 0);
             this.dgvRankingVinos.Name = "dgvRankingVinos";
-            this.dgvRankingVinos.Size = new System.Drawing.Size(960, 737);
+            this.dgvRankingVinos.ReadOnly = true;
+            this.dgvRankingVinos.Size = new System.Drawing.Size(1184, 761);
             this.dgvRankingVinos.TabIndex = 0;
             // 
             // ordenRanking
@@ -110,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(1184, 761);
             this.Controls.Add(this.dgvRankingVinos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
