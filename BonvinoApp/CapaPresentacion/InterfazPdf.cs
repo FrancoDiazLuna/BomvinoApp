@@ -12,7 +12,7 @@ namespace BonvinoApp.CapaPresentacion
         internal void generarPdf(Dictionary<Vino, float> data)
         {
             // Ruta del archivo PDF
-            string filePath = "Vinos.pdf";
+            string filePath = "RankingVinos.pdf";
 
             // Crear un nuevo documento PDF
             PdfDocument document = new PdfDocument();

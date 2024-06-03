@@ -17,7 +17,7 @@ namespace BonvinoApp.CapaNegocio
         private Bodega bodega;
         private List<Reseña> reseñas;
 
-        private List<Reseña> reseñasFiltradas;
+        //private List<Reseña> reseñasFiltradas;
 
         #endregion
 
