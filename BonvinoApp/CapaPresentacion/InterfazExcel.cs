@@ -48,6 +48,7 @@ namespace BonvinoApp.CapaPresentacion
                         varietal += nombreVarietal.Descripcion + ",";
                     }
                     worksheet.Cell(i + 2, 6).Value = varietal;
+                    varietal = "";
                     worksheet.Cell(i + 2, 7).Value = item.Key.Bodega.RegionVitivinicola.Nombre;
                     worksheet.Cell(i + 2, 8).Value = item.Key.Bodega.RegionVitivinicola.Provincia.Pais.Nombre;
                 }
