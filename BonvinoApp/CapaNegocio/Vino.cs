@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
+using System.Linq;
 
 namespace BonvinoApp.CapaNegocio
 {
@@ -56,7 +56,6 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-
         public bool tenesReseñasDeTipoEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
             bool response = false;
@@ -107,20 +106,10 @@ namespace BonvinoApp.CapaNegocio
 
         private float calcularPuntajePromedio(List<float> puntajes)
         {
-            int cantidad = 0;
-            float suma = 0;
-            foreach (float puntaje in puntajes)
-            {
-                suma += puntaje;
-                cantidad++;
-            }
+            int cantidad = puntajes.Count;
+            float suma = puntajes.Sum();
 
-            if (cantidad != 0)
-            {
-                return (suma / cantidad);
-            }
-
-            return 0;
+            return cantidad != 0 ? (suma / cantidad) : 0;
         }
 
         #endregion

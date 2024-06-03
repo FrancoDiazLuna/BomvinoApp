@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="CapaDatos\generalDAC.cs" />
     <Compile Include="CapaNegocio\Bodega.cs" />
-    <Compile Include="CapaNegocio\DatosVisualizacion.cs" />
     <Compile Include="CapaNegocio\GestorGeneracionRankingVino.cs" />
     <Compile Include="CapaNegocio\Pais.cs" />
     <Compile Include="CapaNegocio\Provincia.cs" />
