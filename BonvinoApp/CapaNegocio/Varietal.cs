@@ -17,10 +17,10 @@ namespace BonvinoApp.CapaNegocio
         #endregion
 
         #region [Métodos get y set]
+
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public float Porcentaje { get => porcentaje; set => porcentaje = value; }
         public TipoUva TipoUva { get => tipoUva; set => tipoUva = value; }
-
 
         #endregion
 
@@ -39,18 +39,6 @@ namespace BonvinoApp.CapaNegocio
 
         #region [Métodos]
 
-        //REVISAR   
-        public string conocerTipoUva() 
-        {
-            return TipoUva.Nombre + ", "+TipoUva.Descripcion;
-
-        }
-
-        public void esDeTipoUva() { }
-
-        public void mostrarPorcentaje() { }
-
-        public string getDescripcion() {  return "descrip"; }
 
         #endregion
     }

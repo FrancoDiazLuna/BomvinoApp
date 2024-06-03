@@ -59,8 +59,7 @@ namespace BonvinoApp.CapaNegocio
 
         public void mostrarTodosVinos() { }
 
-
-        public string obtenerRegionYPais
+        public void obtenerRegionYPais() { }
 
         #endregion
     }

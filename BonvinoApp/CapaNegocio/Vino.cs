@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 
 namespace BonvinoApp.CapaNegocio
 {
@@ -75,11 +76,15 @@ namespace BonvinoApp.CapaNegocio
         /// <summary>
         /// Busca información del varietal.
         /// </summary>
-        
-        //A CHEKIAR
-        public string buscarVarietal()
+        public List<string> buscarVarietal()
         {
-            return Varietal.getDescripcion();
+            List<string> descripcionVarietales = new List<string>();
+            foreach (Varietal varietal in varietal)
+            {
+                descripcionVarietales.Add(varietal.Descripcion);
+            }
+
+            return descripcionVarietales;
         }
 
         /// <summary>

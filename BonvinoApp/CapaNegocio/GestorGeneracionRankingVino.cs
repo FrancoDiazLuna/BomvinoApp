@@ -33,9 +33,7 @@ namespace BonvinoApp.CapaNegocio.Gestores
         public GestorGeneracionRankingVino(PantallaGenerarRankingVino pantallaGenerarRankingVino)
         {
             this.pantallaGenerarRankingVino = pantallaGenerarRankingVino;
-            generalDAC general = new generalDAC();
-
-            listaVinos = general.returnVinos();
+            listaVinos = generalDAC.listarVinos();
         }
 
         #region [Métodos]
