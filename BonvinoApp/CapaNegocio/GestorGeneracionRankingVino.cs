@@ -2,7 +2,6 @@
 using BonvinoApp.CapaPresentacion.Forms;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 
 namespace BonvinoApp.CapaNegocio.Gestores
@@ -19,7 +18,7 @@ namespace BonvinoApp.CapaNegocio.Gestores
         private string tipoVisualizacionSeleccionada;
         private List<Vino> listaVinosFiltradosPeriodoSomelier;
         
-        private List<DatosVisualizacion> datos = new List<DatosVisualizacion>();
+        private Dictionary<Vino, float> vinosConPuntajes = new Dictionary<Vino, float>();
 
         #endregion
 
@@ -43,23 +42,21 @@ namespace BonvinoApp.CapaNegocio.Gestores
             pantallaGenerarRankingVino.solicitarFechaDesdeHasta();
         }
 
-        public bool tomarFechaDesdeHasta(DateTime fechaDesde, DateTime fechaHasta)
+        public void tomarFechaDesdeHasta(DateTime fechaDesde, DateTime fechaHasta)
         {
             this.fechaDesde = fechaDesde;
             this.fechaHasta = fechaHasta;
 
             pantallaGenerarRankingVino.solicitarTipoReseña();
-
-            return true;
         }
 
         public void tomarTipoReseña(int tipoReseñaSeleccionada)
         {
             var formatos = new Dictionary<int, string>
             {
-                { 0, "Normal" },
-                { 1, "Sommelier" },
-                { 2, "Amigos" }
+                { 1, "Normal" },
+                { 2, "Sommelier" },
+                { 3, "Amigos" }
             };
 
             if (formatos.TryGetValue(tipoReseñaSeleccionada, out var formato))
@@ -78,9 +75,9 @@ namespace BonvinoApp.CapaNegocio.Gestores
         {
             var formatos = new Dictionary<int, string>
             {
-                { 0, "Excel" },
-                { 1, "PDF" },
-                { 2, "Pantalla" }
+                { 1, "Excel" },
+                { 2, "PDF" },
+                { 3, "Pantalla" }
             };
 
             if (formatos.TryGetValue(formatoSeleccionado, out var formato))
@@ -94,18 +91,22 @@ namespace BonvinoApp.CapaNegocio.Gestores
             }
         }
 
-        public void tomarConfirmacionGeneracionReporte(bool confirmacion)
+        public bool tomarConfirmacionGeneracionReporte()
         {
-            if (confirmacion)
+            bool hayVinosConReseña = buscarVinosConReseñaEnPeriodo(FechaDesde, FechaHasta);
+            if (hayVinosConReseña)
             {
-                buscarVinosConReseñaEnPeriodo(FechaDesde, FechaHasta);
-                calcularPromedioCalificacion();
-                List<DatosVisualizacion> datos = ordenarVinosSegunCalificacion();
-                generarVisualizacionDeReporte(tipoVisualizacionSeleccionada,datos);
+                return false;
             }
+
+            calcularPromedioCalificacion();
+            ordenarVinosSegunCalificacion();
+            generarVisualizacionDeReporte(tipoVisualizacionSeleccionada);
+
+            return true;
         }
 
-        private void buscarVinosConReseñaEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
+        private bool buscarVinosConReseñaEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
             foreach (Vino vino in listaVinos)
             {
@@ -114,6 +115,13 @@ namespace BonvinoApp.CapaNegocio.Gestores
                     listaVinosFiltradosPeriodoSomelier.Add(vino);
                 }
             }
+
+            if (listaVinosFiltradosPeriodoSomelier == null || !listaVinosFiltradosPeriodoSomelier.Any())
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void calcularPromedioCalificacion()
@@ -122,60 +130,59 @@ namespace BonvinoApp.CapaNegocio.Gestores
             {
                 float puntaje = vino.calcularPromedioCalificacion(FechaDesde, FechaHasta);
 
-                datos.Add(new DatosVisualizacion(vino, puntaje));
+                vinosConPuntajes[vino] = puntaje;
             }
         }
 
-        private List<DatosVisualizacion> ordenarVinosSegunCalificacion()
+        private void ordenarVinosSegunCalificacion()
         {
-            datos.OrderByDescending(vino => vino.CalificacionSommelier);
+            int top = 10;
 
-            List<DatosVisualizacion> top10 = datos.Take(10).ToList();
+            var topVinos = vinosConPuntajes.OrderByDescending(vino => vino.Value).Take(top).ToList();
 
-            foreach (DatosVisualizacion dato in top10)
+            vinosConPuntajes.Clear();
+            foreach (var vino in topVinos)
             {
-                dato.Nombre = dato.Vino.Nombre;
-                dato.PrecioSugerido = dato.Vino.Precio;
-                dato.Bodega = dato.Vino.Bodega.Nombre;
-                //dato.Variertal = dato.Vino.Varietal.Nombre;
-                //dato.Region = dato.Vino.Bodega.RegionVitivinicola.Nombre;
-                //dato.Pais = dato.Vino.Bodega.RegionVitivinicola.Provincia.Pais.Nombre;
+                vinosConPuntajes[vino.Key] = vino.Value;
             }
-            
-            return top10;
         }
 
-        private void generarVisualizacionDeReporte(string visualizacion, List<DatosVisualizacion> datos)
+        private void generarVisualizacionDeReporte(string visualizacion)
         {
             switch (visualizacion)
             {
                 case "Excel":
-                    generarExcel(datos);
+                    generarExcel(vinosConPuntajes);
                     break;
                 case "PDF":
-                    generarPDF(datos);
+                    generarPDF(vinosConPuntajes);
                     break;
                 case "Pantalla":
-                    generarPantalla(datos);
+                    generarPantalla(vinosConPuntajes);
                     break;                
             }
 
             pantallaGenerarRankingVino.informarGeneracionExitosaDeReporte();
         }
-        private void generarExcel(List<DatosVisualizacion> datos) 
+        private void generarExcel(Dictionary<Vino, float> top10) 
         {
             //implementar esto
             //generarExcel
         }
-        private void generarPDF(List<DatosVisualizacion> datos)
+        private void generarPDF(Dictionary<Vino, float> top10)
         {
             //implementar esto
             //generar el PDF
         }
-        private void generarPantalla(List<DatosVisualizacion> datos)
+        private void generarPantalla(Dictionary<Vino, float> top10)
         {
-            //implementar esto
-            //generar una instancia del Form VisualizacionPantalla
+            VisualizacionPantalla visualizacionPantalla = new VisualizacionPantalla();
+
+            foreach (var vino in top10)
+            {
+                //visualizacionPantalla.cargarDatosEnPantalla();
+            }
+            visualizacionPantalla.ShowDialog();
         }
 
         public void finCU()

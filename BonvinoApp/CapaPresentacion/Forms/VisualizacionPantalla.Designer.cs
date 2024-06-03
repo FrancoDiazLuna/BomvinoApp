@@ -29,36 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisualizacionPantalla));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRankingVinos = new System.Windows.Forms.DataGridView();
             this.ordenRanking = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreVino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calificacionSommelier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calificacionGeneral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioSugerido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.varietal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.región = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRankingVinos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvRankingVinos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRankingVinos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRankingVinos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ordenRanking,
             this.nombreVino,
             this.calificacionSommelier,
-            this.calificacionGeneral,
             this.precioSugerido,
             this.bodega,
             this.varietal,
             this.región,
             this.pais});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(960, 737);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvRankingVinos.Location = new System.Drawing.Point(12, 12);
+            this.dgvRankingVinos.Name = "dgvRankingVinos";
+            this.dgvRankingVinos.Size = new System.Drawing.Size(960, 737);
+            this.dgvRankingVinos.TabIndex = 0;
             // 
             // ordenRanking
             // 
@@ -77,12 +75,6 @@
             this.calificacionSommelier.HeaderText = "Calificación de Sommelier";
             this.calificacionSommelier.Name = "calificacionSommelier";
             this.calificacionSommelier.ReadOnly = true;
-            // 
-            // calificacionGeneral
-            // 
-            this.calificacionGeneral.HeaderText = "Calificación General";
-            this.calificacionGeneral.Name = "calificacionGeneral";
-            this.calificacionGeneral.ReadOnly = true;
             // 
             // precioSugerido
             // 
@@ -119,7 +111,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 761);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvRankingVinos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -127,18 +119,17 @@
             this.Name = "VisualizacionPantalla";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ranking de Vinos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRankingVinos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRankingVinos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordenRanking;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreVino;
         private System.Windows.Forms.DataGridViewTextBoxColumn calificacionSommelier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn calificacionGeneral;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioSugerido;
         private System.Windows.Forms.DataGridViewTextBoxColumn bodega;
         private System.Windows.Forms.DataGridViewTextBoxColumn varietal;

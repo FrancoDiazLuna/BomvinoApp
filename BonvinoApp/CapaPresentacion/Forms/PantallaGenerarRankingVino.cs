@@ -45,17 +45,9 @@ namespace BonvinoApp.CapaPresentacion.Forms
             fechaDesde = dtpFechaDesde.Value;
             fechaHasta = dtpFechaHasta.Value;
 
-            bool response = false;
-
             if (validarPeriodo(fechaDesde, fechaHasta))
             {
-                response = gestorRankingVinos.tomarFechaDesdeHasta(fechaDesde, fechaHasta);
-
-                if (!response)
-                {
-                    MessageBox.Show("No hay reseñas en el periodo seleccionado.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    limpiarCampos(true, true, true);
-                }
+                gestorRankingVinos.tomarFechaDesdeHasta(fechaDesde, fechaHasta);                
             }
             else
             {
@@ -88,7 +80,16 @@ namespace BonvinoApp.CapaPresentacion.Forms
         private void btnTipoReseña_Click(object sender, EventArgs e)
         {            
             tipoReseñaSeleccionada = cmbTipoReseña.SelectedIndex;
-            gestorRankingVinos.tomarTipoReseña(tipoReseñaSeleccionada);
+            if (tipoReseñaSeleccionada != -1)
+            {
+                gestorRankingVinos.tomarTipoReseña(tipoReseñaSeleccionada);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un formato de visualización.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                limpiarCampos(false, false, true);
+            }
+
         }
 
         public void solicitarSeleccionFormaVisualizacion()
@@ -116,10 +117,6 @@ namespace BonvinoApp.CapaPresentacion.Forms
                 MessageBox.Show("Seleccinado Pantalla.");
                 gestorRankingVinos.tomarSeleccionFormaVisualizacion(tipoVisualizacionSeleccionada);
             }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un formato de visualización.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         public void solicitarConfirmacionGeneracionReporte()
@@ -129,7 +126,13 @@ namespace BonvinoApp.CapaPresentacion.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            gestorRankingVinos.tomarConfirmacionGeneracionReporte(true);
+            bool response = gestorRankingVinos.tomarConfirmacionGeneracionReporte();
+
+            if (!response)
+            {
+                MessageBox.Show("No hay reseñas en el periodo seleccionado.", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                limpiarCampos(true, true, true);
+            }
         }
 
         public void informarGeneracionExitosaDeReporte()
@@ -190,7 +193,5 @@ namespace BonvinoApp.CapaPresentacion.Forms
 
 
         #endregion
-
-
     }
 }
