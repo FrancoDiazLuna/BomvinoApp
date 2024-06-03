@@ -19,7 +19,7 @@ namespace BonvinoApp.CapaDatos
         public static Provincia provincia9 = new Provincia("Córdoba", pais);
         public static Provincia provincia10 = new Provincia("Jujuy", pais);
 
-        public static RegionVitivinicola region1 = new RegionVitivinicola("Mendoza", provincia1 , "Región vitivinícola más importante de Argentina.");
+        public static RegionVitivinicola region1 = new RegionVitivinicola("Mendoza", provincia1, "Región vitivinícola más importante de Argentina.");
         public static RegionVitivinicola region2 = new RegionVitivinicola("San Juan", provincia2, "Segunda región vitivinícola más importante.");
         public static RegionVitivinicola region3 = new RegionVitivinicola("La Rioja", provincia3, "Región con gran tradición vitivinícola.");
         public static RegionVitivinicola region4 = new RegionVitivinicola("Salta", provincia4, "Conocida por sus viñedos de altura.");
@@ -64,41 +64,26 @@ namespace BonvinoApp.CapaDatos
         public static Varietal varietal10 = new Varietal("Grenache", 1.0f, tipoUva10);
 
         public static Vino vino1 = new Vino("ImagenEtiqueta1", 2018, "Catena Zapata Malbec Argentino", "Vista: Color púrpura intenso con reflejos violáceos.\r\nNariz: Aromas complejos de frutos negros maduros, como moras y ciruelas, con notas de violeta, especias y toques de roble francés.\r\nBoca: En boca es estructurado, con taninos firmes pero sedosos, equilibrado, con sabores de frutas negras, chocolate y un toque mineral. Final largo y persistente.\r\n", 1.5f, crearListaVarietales(), crearListaReseña(), bodega1);
-        public static Vino vino2 = new Vino("ImagenEtiqueta2", 2019, "Norton Reserva Malbec", "Vista: Rojo rubí profundo.\r\nNariz: Aromas de frutas rojas maduras, ciruelas y moras, con sutiles notas de especias y vainilla.\r\nBoca: En boca es jugoso y bien balanceado, con taninos suaves y redondos. Sabores de frutos rojos, chocolate y un leve toque de roble. Final agradable y persistente.", 2.5f, crearListaVarietales(), crearListaReseña(), bodega2);
-        public static Vino vino3 = new Vino("ImagenEtiqueta3", 2017, "Luigi Bosca De Sangre Cabernet Sauvignon", "Vista: Rojo granate intenso.\r\nNariz: Aromas de frutas negras maduras, como cassis y ciruelas, acompañados de notas de pimienta negra, tabaco y cacao.\r\nBoca: Cuerpo robusto con taninos firmes y bien integrados. Sabores de frutas negras, especias y un toque ahumado. Final largo y elegante.", 3.5f, crearListaVarietales(), crearListaReseña(), bodega3);
-        public static Vino vino4 = new Vino("ImagenEtiqueta4", 2018, "Trapiche Iscay Malbec-Cabernet Franc", "Vista: Color rojo profundo con matices violetas.\r\nNariz: Aromas intensos de frutos rojos y negros, con notas florales de violeta y toques de hierbas y especias.\r\nBoca: En boca es complejo y elegante, con taninos maduros y una acidez equilibrada. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 4.5f, crearListaVarietales(), crearListaReseña(), bodega4);
-        public static Vino vino5 = new Vino("ImagenEtiqueta5", 2019, "El Enemigo Chardonnay", "Vista: Color dorado brillante.\r\nNariz: Aromas de frutas tropicales, como piña y mango, con notas cítricas, vainilla y un toque de mantequilla.\r\nBoca: En boca es fresco y cremoso, con una buena acidez que equilibra los sabores de frutas tropicales, cítricos y un suave toque de roble. Final largo y refrescante.", 5.5f, crearListaVarietales(), crearListaReseña(), bodega5);
-        public static Vino vino6 = new Vino("ImagenEtiqueta6", 2016, "Achaval Ferrer Finca Altamira Malbec", "Vista: Color púrpura intenso.\r\nNariz: Aromas profundos de frutas negras, como moras y arándanos, con notas florales de violeta, especias y un toque mineral.\r\nBoca: En boca es potente y elegante, con taninos firmes y bien estructurados. Sabores de frutas negras, especias y un toque terroso. Final largo y complejo.", 6.5f, crearListaVarietales(), crearListaReseña(), bodega6);
-        public static Vino vino7 = new Vino("ImagenEtiqueta7", 2020, "Susana Balbo Signature Torrontés", "Vista: Color amarillo pálido con reflejos verdosos.\r\nNariz: Aromas intensos de flores blancas, como jazmín y azahar, con notas cítricas y de frutas tropicales.\r\nBoca: En boca es fresco y vibrante, con una acidez equilibrada. Sabores de frutas cítricas, durazno y un toque de especias. Final largo y aromático.", 7.5f, crearListaVarietales(), crearListaReseña(), bodega7);
-        public static Vino vino8 = new Vino("ImagenEtiqueta8", 2016, "Bodega Colomé Auténtico Malbec", "Vista: Rojo profundo con tonos violetas.\r\nNariz: Aromas intensos de frutas rojas y negras, como ciruelas y moras, con notas florales y de especias.\r\nBoca: En boca es concentrado y potente, con taninos firmes y bien integrados. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 8.5f, crearListaVarietales(), crearListaReseña(), bodega8);
-        public static Vino vino9 = new Vino("ImagenEtiqueta9", 2019, "Rutini Apartado Gran Malbec", "Vista: Rojo oscuro con reflejos violáceos.\r\nNariz: Aromas complejos de frutas negras, como moras y ciruelas, con notas de chocolate, vainilla y especias.\r\nBoca: En boca es robusto y bien estructurado, con taninos maduros y una acidez equilibrada. Sabores de frutas negras, chocolate y un toque de roble. Final largo y elegante.", 9.5f, crearListaVarietales(), crearListaReseña(), bodega9);
-        public static Vino vino10 = new Vino("ImagenEtiqueta1", 2018, "Catena Zapata Malbec Argentino", "Vista: Color púrpura intenso con reflejos violáceos.\r\nNariz: Aromas complejos de frutos negros maduros, como moras y ciruelas, con notas de violeta, especias y toques de roble francés.\r\nBoca: En boca es estructurado, con taninos firmes pero sedosos, equilibrado, con sabores de frutas negras, chocolate y un toque mineral. Final largo y persistente.\r\n", 1.5f, crearListaVarietales(), crearListaReseña(), bodega1);
-        public static Vino vino11 = new Vino("ImagenEtiqueta2", 2023, "Norton Reserva Malbec", "Vista: Rojo rubí profundo.\r\nNariz: Aromas de frutas rojas maduras, ciruelas y moras, con sutiles notas de especias y vainilla.\r\nBoca: En boca es jugoso y bien balanceado, con taninos suaves y redondos. Sabores de frutos rojos, chocolate y un leve toque de roble. Final agradable y persistente.", 2.5f, crearListaVarietales(), crearListaReseña(), bodega2);
-        public static Vino vino12 = new Vino("ImagenEtiqueta3", 2017, "Luigi Bosca De Sangre Cabernet Sauvignon", "Vista: Rojo granate intenso.\r\nNariz: Aromas de frutas negras maduras, como cassis y ciruelas, acompañados de notas de pimienta negra, tabaco y cacao.\r\nBoca: Cuerpo robusto con taninos firmes y bien integrados. Sabores de frutas negras, especias y un toque ahumado. Final largo y elegante.", 3.5f, crearListaVarietales(), crearListaReseña(), bodega3);
-        public static Vino vino13 = new Vino("ImagenEtiqueta4", 2018, "Trapiche Iscay Malbec-Cabernet Franc", "Vista: Color rojo profundo con matices violetas.\r\nNariz: Aromas intensos de frutos rojos y negros, con notas florales de violeta y toques de hierbas y especias.\r\nBoca: En boca es complejo y elegante, con taninos maduros y una acidez equilibrada. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 4.5f, crearListaVarietales(), crearListaReseña(), bodega4);
-        public static Vino vino14 = new Vino("ImagenEtiqueta5", 2019, "El Enemigo Chardonnay", "Vista: Color dorado brillante.\r\nNariz: Aromas de frutas tropicales, como piña y mango, con notas cítricas, vainilla y un toque de mantequilla.\r\nBoca: En boca es fresco y cremoso, con una buena acidez que equilibra los sabores de frutas tropicales, cítricos y un suave toque de roble. Final largo y refrescante.", 5.5f, crearListaVarietales(), crearListaReseña(), bodega5);
-        public static Vino vino15 = new Vino("ImagenEtiqueta6", 2016, "Achaval Ferrer Finca Altamira Malbec", "Vista: Color púrpura intenso.\r\nNariz: Aromas profundos de frutas negras, como moras y arándanos, con notas florales de violeta, especias y un toque mineral.\r\nBoca: En boca es potente y elegante, con taninos firmes y bien estructurados. Sabores de frutas negras, especias y un toque terroso. Final largo y complejo.", 6.5f, crearListaVarietales(), crearListaReseña(), bodega6);
-        public static Vino vino16 = new Vino("ImagenEtiqueta7", 2020, "Susana Balbo Signature Torrontés", "Vista: Color amarillo pálido con reflejos verdosos.\r\nNariz: Aromas intensos de flores blancas, como jazmín y azahar, con notas cítricas y de frutas tropicales.\r\nBoca: En boca es fresco y vibrante, con una acidez equilibrada. Sabores de frutas cítricas, durazno y un toque de especias. Final largo y aromático.", 7.5f, crearListaVarietales(), crearListaReseña(), bodega7);
-        public static Vino vino17 = new Vino("ImagenEtiqueta8", 2018, "Bodega Colomé Auténtico Malbec", "Vista: Rojo profundo con tonos violetas.\r\nNariz: Aromas intensos de frutas rojas y negras, como ciruelas y moras, con notas florales y de especias.\r\nBoca: En boca es concentrado y potente, con taninos firmes y bien integrados. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 8.5f, crearListaVarietales(), crearListaReseña(), bodega8);
-        public static Vino vino18 = new Vino("ImagenEtiqueta9", 2017, "Rutini Apartado Gran Malbec", "Vista: Rojo oscuro con reflejos violáceos.\r\nNariz: Aromas complejos de frutas negras, como moras y ciruelas, con notas de chocolate, vainilla y especias.\r\nBoca: En boca es robusto y bien estructurado, con taninos maduros y una acidez equilibrada. Sabores de frutas negras, chocolate y un toque de roble. Final largo y elegante.", 9.5f, crearListaVarietales(), crearListaReseña(), bodega9);
-        public static Vino vino19 = new Vino("ImagenEtiqueta10", 2023, "Luigi Bosca Malbec", "Vista: Color rojo profundo con reflejos violáceos.\r\nNariz: Aromas intensos de frutas rojas y negras, con notas de vainilla y especias.\r\nBoca: En boca es robusto y equilibrado, con taninos suaves y un final largo y persistente.", 10.5f, crearListaVarietales(), crearListaReseña(), bodega9);
-        public static Vino vino20 = new Vino("ImagenEtiqueta11", 2023, "Trapiche Gran Medalla Malbec", "Vista: Color púrpura profundo.\r\nNariz: Aromas de frutas maduras, como moras y ciruelas, con notas florales y de especias.\r\nBoca: En boca es elegante y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas negras y especias. Final largo y persistente.", 11.5f, crearListaVarietales(), crearListaReseña(), bodega10);
-        public static Vino vino21 = new Vino("ImagenEtiqueta12", 2023, "Finca Decero Petit Verdot", "Vista: Color rojo rubí intenso.\r\nNariz: Aromas de frutas rojas y negras, con notas de especias y toques florales.\r\nBoca: En boca es suave y sedoso, con taninos redondos y una acidez equilibrada. Sabores de frutas maduras y especias. Final largo y aromático.", 12.5f, crearListaVarietales(), crearListaReseña(), bodega2);
-        public static Vino vino22 = new Vino("ImagenEtiqueta13", 2023, "Clos de los Siete Red Blend", "Vista: Color rojo profundo con matices violetas.\r\nNariz: Aromas complejos de frutas negras, especias y tostado.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras y especias. Final largo y persistente.", 13.5f, crearListaVarietales(), crearListaReseña(), bodega3);
-        public static Vino vino23 = new Vino("ImagenEtiqueta14", 2023, "Finca Sophenia Synthesis Malbec", "Vista: Color rojo intenso con matices violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y toques minerales.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas negras y especias. Final largo y persistente.", 14.5f, crearListaVarietales(), crearListaReseña(), bodega8);
-        public static Vino vino24 = new Vino("ImagenEtiqueta15", 2023, "Casa Roja Cabernet Sauvignon", "Vista: Color rojo rubí brillante.\r\nNariz: Aromas de frutas rojas maduras, con notas de especias y toques herbáceos.\r\nBoca: En boca es fresco y equilibrado, con taninos suaves y una acidez moderada. Sabores de frutas rojas y especias. Final persistente.", 15.5f, crearListaVarietales(), crearListaReseña(), bodega4);
-        public static Vino vino25 = new Vino("ImagenEtiqueta16", 2023, "Bodegas Bianchi Malbec", "Vista: Color rojo violáceo profundo.\r\nNariz: Aromas intensos de frutas negras maduras, con notas de especias y tostado.\r\nBoca: En boca es estructurado y potente, con taninos firmes y una acidez equilibrada. Sabores de frutas negras y especias. Final largo y persistente.", 16.5f, crearListaVarietales(), crearListaReseña(), bodega5);
-        public static Vino vino26 = new Vino("ImagenEtiqueta18", 2020, "Terrazas de los Andes Malbec", "Vista: Color rojo intenso con reflejos violáceos.\r\nNariz: Aromas de frutas negras maduras, como moras y ciruelas, con notas de especias y toques minerales.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas negras y especias. Final largo y persistente.", 18.5f, crearListaVarietales(), crearListaReseña(), bodega6);
-        public static Vino vino27 = new Vino("ImagenEtiqueta19", 2018, "Cafayate Gran Linaje Malbec", "Vista: Rojo rubí profundo con matices violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y tostado.\r\nBoca: En boca es potente y concentrado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque ahumado. Final largo y persistente.", 19.5f, crearListaVarietales(), crearListaReseña(), bodega7);
-        public static Vino vino28 = new Vino("ImagenEtiqueta20", 2019, "Don Melchor Cabernet Sauvignon", "Vista: Color rojo profundo con reflejos violáceos.\r\nNariz: Aromas intensos de frutas negras, como cassis y moras, con notas de tabaco, cuero y especias.\r\nBoca: En boca es elegante y estructurado, con taninos maduros y una acidez equilibrada. Sabores de frutas negras, especias y un toque mineral. Final largo y persistente.", 20.5f, crearListaVarietales(), crearListaReseña(), bodega8);
-        public static Vino vino29 = new Vino("ImagenEtiqueta21", 2017, "Zuccardi Aluvional Paraje Altamira Malbec", "Vista: Color rojo intenso con matices violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y toques minerales.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque terroso. Final largo y persistente.", 21.5f, crearListaVarietales(), crearListaReseña(), bodega9);
-        public static Vino vino30 = new Vino("ImagenEtiqueta22", 2022, "Mendel Unus Malbec", "Vista: Color rojo profundo con reflejos violáceos.\r\nNariz: Aromas de frutas negras maduras, como moras y ciruelas, con notas de vainilla y especias.\r\nBoca: En boca es concentrado y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque de roble. Final largo y persistente.", 22.5f, crearListaVarietales(), crearListaReseña(), bodega2);
-        public static Vino vino31 = new Vino("ImagenEtiqueta23", 2022, "BenMarco Expresivo Malbec", "Vista: Color rojo intenso con matices violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y tostado.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque ahumado. Final largo y persistente.", 23.5f, crearListaVarietales(), crearListaReseña(), bodega1);
-        public static Vino vino32 = new Vino("ImagenEtiqueta24", 2022, "Bodega Norton Lote Negro Malbec", "Vista: Color rojo intenso con reflejos violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y tostado.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque ahumado. Final largo y persistente.", 24.5f, crearListaVarietales(), crearListaReseña(), bodega4);
-        public static Vino vino33 = new Vino("ImagenEtiqueta25", 2022, "Luigi Bosca Luján de Cuyo Malbec", "Vista: Color rojo profundo con matices violáceos.\r\nNariz: Aromas intensos de frutas negras maduras, especias y tostado.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque ahumado. Final largo y persistente.", 25.5f, crearListaVarietales(), crearListaReseña(), bodega3);
-        public static Vino vino34 = new Vino("ImagenEtiqueta26", 2019, "Finca Flichman Reserva Malbec", "Vista: Color rojo profundo con reflejos violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y tostado.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque ahumado. Final largo y persistente.", 26.5f, crearListaVarietales(), crearListaReseña(), bodega4);
-        public static Vino vino35 = new Vino("ImagenEtiqueta27", 2018, "Salentein Single Vineyard Malbec", "Vista: Color rojo intenso con matices violáceos.\r\nNariz: Aromas de frutas negras maduras, especias y tostado.\r\nBoca: En boca es potente y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas maduras, especias y un toque ahumado. Final largo y persistente.", 27.5f, crearListaVarietales(), crearListaReseña(), bodega9);
-
+        public static Vino vino2 = new Vino("ImagenEtiqueta2", 2019, "Norton Reserva Malbec", "Vista: Rojo rubí profundo.\r\nNariz: Aromas de frutas rojas maduras, ciruelas y moras, con sutiles notas de especias y vainilla.\r\nBoca: En boca es jugoso y bien balanceado, con taninos suaves y redondos. Sabores de frutos rojos, chocolate y un leve toque de roble. Final agradable y persistente.", 2.5f, crearListaVarietales(), crearListaReseña2(), bodega2);
+        public static Vino vino3 = new Vino("ImagenEtiqueta3", 2017, "Luigi Bosca De Sangre Cabernet Sauvignon", "Vista: Rojo granate intenso.\r\nNariz: Aromas de frutas negras maduras, como cassis y ciruelas, acompañados de notas de pimienta negra, tabaco y cacao.\r\nBoca: Cuerpo robusto con taninos firmes y bien integrados. Sabores de frutas negras, especias y un toque ahumado. Final largo y elegante.", 3.5f, crearListaVarietales(), crearListaReseña3(), bodega3);
+        public static Vino vino4 = new Vino("ImagenEtiqueta4", 2018, "Trapiche Iscay Malbec-Cabernet Franc", "Vista: Color rojo profundo con matices violetas.\r\nNariz: Aromas intensos de frutos rojos y negros, con notas florales de violeta y toques de hierbas y especias.\r\nBoca: En boca es complejo y elegante, con taninos maduros y una acidez equilibrada. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 4.5f, crearListaVarietales(), crearListaReseña4(), bodega4);
+        public static Vino vino5 = new Vino("ImagenEtiqueta5", 2019, "El Enemigo Chardonnay", "Vista: Color dorado brillante.\r\nNariz: Aromas de frutas tropicales, como piña y mango, con notas cítricas, vainilla y un toque de mantequilla.\r\nBoca: En boca es fresco y cremoso, con una buena acidez que equilibra los sabores de frutas tropicales, cítricos y un suave toque de roble. Final largo y refrescante.", 5.5f, crearListaVarietales(), crearListaReseña5(), bodega5);
+        public static Vino vino6 = new Vino("ImagenEtiqueta6", 2016, "Achaval Ferrer Finca Altamira Malbec", "Vista: Color púrpura intenso.\r\nNariz: Aromas profundos de frutas negras, como moras y arándanos, con notas florales de violeta, especias y un toque mineral.\r\nBoca: En boca es potente y elegante, con taninos firmes y bien estructurados. Sabores de frutas negras, especias y un toque terroso. Final largo y complejo.", 6.5f, crearListaVarietales(), crearListaReseña6(), bodega6);
+        public static Vino vino7 = new Vino("ImagenEtiqueta7", 2020, "Susana Balbo Signature Torrontés", "Vista: Color amarillo pálido con reflejos verdosos.\r\nNariz: Aromas intensos de flores blancas, como jazmín y azahar, con notas cítricas y de frutas tropicales.\r\nBoca: En boca es fresco y vibrante, con una acidez equilibrada. Sabores de frutas cítricas, durazno y un toque de especias. Final largo y aromático.", 7.5f, crearListaVarietales(), crearListaReseña7(), bodega7);
+        public static Vino vino8 = new Vino("ImagenEtiqueta8", 2016, "Bodega Colomé Auténtico Malbec", "Vista: Rojo profundo con tonos violetas.\r\nNariz: Aromas intensos de frutas rojas y negras, como ciruelas y moras, con notas florales y de especias.\r\nBoca: En boca es concentrado y potente, con taninos firmes y bien integrados. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 8.5f, crearListaVarietales(), crearListaReseña8(), bodega8);
+        public static Vino vino9 = new Vino("ImagenEtiqueta9", 2019, "Rutini Apartado Gran Malbec", "Vista: Rojo oscuro con reflejos violáceos.\r\nNariz: Aromas complejos de frutas negras, como moras y ciruelas, con notas de chocolate, vainilla y especias.\r\nBoca: En boca es robusto y bien estructurado, con taninos maduros y una acidez equilibrada. Sabores de frutas negras, chocolate y un toque de roble. Final largo y elegante.", 9.5f, crearListaVarietales(), crearListaReseña16(), bodega9);
+        public static Vino vino10 = new Vino("ImagenEtiqueta1", 2018, "Catena Zapata Malbec Argentino", "Vista: Color púrpura intenso con reflejos violáceos.\r\nNariz: Aromas complejos de frutos negros maduros, como moras y ciruelas, con notas de violeta, especias y toques de roble francés.\r\nBoca: En boca es estructurado, con taninos firmes pero sedosos, equilibrado, con sabores de frutas negras, chocolate y un toque mineral. Final largo y persistente.\r\n", 1.5f, crearListaVarietales(), crearListaReseña9(), bodega1);
+        public static Vino vino11 = new Vino("ImagenEtiqueta2", 2023, "Norton Reserva Malbec", "Vista: Rojo rubí profundo.\r\nNariz: Aromas de frutas rojas maduras, ciruelas y moras, con sutiles notas de especias y vainilla.\r\nBoca: En boca es jugoso y bien balanceado, con taninos suaves y redondos. Sabores de frutos rojos, chocolate y un leve toque de roble. Final agradable y persistente.", 2.5f, crearListaVarietales(), crearListaReseña10(), bodega2);
+        public static Vino vino12 = new Vino("ImagenEtiqueta3", 2017, "Luigi Bosca De Sangre Cabernet Sauvignon", "Vista: Rojo granate intenso.\r\nNariz: Aromas de frutas negras maduras, como cassis y ciruelas, acompañados de notas de pimienta negra, tabaco y cacao.\r\nBoca: Cuerpo robusto con taninos firmes y bien integrados. Sabores de frutas negras, especias y un toque ahumado. Final largo y elegante.", 3.5f, crearListaVarietales(), crearListaReseña11(), bodega3);
+        public static Vino vino13 = new Vino("ImagenEtiqueta4", 2018, "Trapiche Iscay Malbec-Cabernet Franc", "Vista: Color rojo profundo con matices violetas.\r\nNariz: Aromas intensos de frutos rojos y negros, con notas florales de violeta y toques de hierbas y especias.\r\nBoca: En boca es complejo y elegante, con taninos maduros y una acidez equilibrada. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 4.5f, crearListaVarietales(), crearListaReseña12(), bodega4);
+        public static Vino vino14 = new Vino("ImagenEtiqueta5", 2019, "El Enemigo Chardonnay", "Vista: Color dorado brillante.\r\nNariz: Aromas de frutas tropicales, como piña y mango, con notas cítricas, vainilla y un toque de mantequilla.\r\nBoca: En boca es fresco y cremoso, con una buena acidez que equilibra los sabores de frutas tropicales, cítricos y un suave toque de roble. Final largo y refrescante.", 5.5f, crearListaVarietales(), crearListaReseña13(), bodega5);
+        public static Vino vino15 = new Vino("ImagenEtiqueta6", 2016, "Achaval Ferrer Finca Altamira Malbec", "Vista: Color púrpura intenso.\r\nNariz: Aromas profundos de frutas negras, como moras y arándanos, con notas florales de violeta, especias y un toque mineral.\r\nBoca: En boca es potente y elegante, con taninos firmes y bien estructurados. Sabores de frutas negras, especias y un toque terroso. Final largo y complejo.", 6.5f, crearListaVarietales(), crearListaReseña14(), bodega6);
+        public static Vino vino16 = new Vino("ImagenEtiqueta7", 2020, "Susana Balbo Signature Torrontés", "Vista: Color amarillo pálido con reflejos verdosos.\r\nNariz: Aromas intensos de flores blancas, como jazmín y azahar, con notas cítricas y de frutas tropicales.\r\nBoca: En boca es fresco y vibrante, con una acidez equilibrada. Sabores de frutas cítricas, durazno y un toque de especias. Final largo y aromático.", 7.5f, crearListaVarietales(), crearListaReseña15(), bodega7);
+        public static Vino vino17 = new Vino("ImagenEtiqueta8", 2018, "Bodega Colomé Auténtico Malbec", "Vista: Rojo profundo con tonos violetas.\r\nNariz: Aromas intensos de frutas rojas y negras, como ciruelas y moras, con notas florales y de especias.\r\nBoca: En boca es concentrado y potente, con taninos firmes y bien integrados. Sabores de frutas maduras, especias y un toque mineral. Final largo y persistente.", 8.5f, crearListaVarietales(), crearListaReseña16(), bodega8);
+        public static Vino vino18 = new Vino("ImagenEtiqueta9", 2017, "Rutini Apartado Gran Malbec", "Vista: Rojo oscuro con reflejos violáceos.\r\nNariz: Aromas complejos de frutas negras, como moras y ciruelas, con notas de chocolate, vainilla y especias.\r\nBoca: En boca es robusto y bien estructurado, con taninos maduros y una acidez equilibrada. Sabores de frutas negras, chocolate y un toque de roble. Final largo y elegante.", 9.5f, crearListaVarietales(), crearListaReseña16(), bodega9);
+        public static Vino vino19 = new Vino("ImagenEtiqueta10", 2023, "Luigi Bosca Malbec", "Vista: Color rojo profundo con reflejos violáceos.\r\nNariz: Aromas intensos de frutas rojas y negras, con notas de vainilla y especias.\r\nBoca: En boca es robusto y equilibrado, con taninos suaves y un final largo y persistente.", 10.5f, crearListaVarietales(), crearListaReseña16(), bodega9);
+        public static Vino vino20 = new Vino("ImagenEtiqueta11", 2023, "Trapiche Gran Medalla Malbec", "Vista: Color púrpura profundo.\r\nNariz: Aromas de frutas maduras, como moras y ciruelas, con notas florales y de especias.\r\nBoca: En boca es elegante y estructurado, con taninos firmes y una acidez equilibrada. Sabores de frutas negras y especias. Final largo y persistente.", 11.5f, crearListaVarietales(), crearListaReseña16(), bodega10);
+       
 
         public static List<Vino> listarVinos()
         {
@@ -124,21 +109,6 @@ namespace BonvinoApp.CapaDatos
             listaVinos.Add(vino18);
             listaVinos.Add(vino19);
             listaVinos.Add(vino20);
-            listaVinos.Add(vino21);
-            listaVinos.Add(vino22);
-            listaVinos.Add(vino23);                
-            listaVinos.Add(vino24);
-            listaVinos.Add(vino25);
-            listaVinos.Add(vino26);
-            listaVinos.Add(vino27);
-            listaVinos.Add(vino28);
-            listaVinos.Add(vino29);
-            listaVinos.Add(vino30);
-            listaVinos.Add(vino31);                
-            listaVinos.Add(vino32);
-            listaVinos.Add(vino33);
-            listaVinos.Add(vino34);
-            listaVinos.Add(vino35);
 
             return listaVinos;
         }
@@ -168,38 +138,38 @@ namespace BonvinoApp.CapaDatos
         public static Reseña reseña5 = new Reseña("Producto defectuoso, pero excelente servicio al cliente", true, DateTime.Now.AddDays(-3), 3, vino1);
         public static Reseña reseña6 = new Reseña("No lo recomiendo, mala calidad", false, DateTime.Now.AddDays(-8), 1, vino2);
         public static Reseña reseña7 = new Reseña("El producto llegó tarde", true, DateTime.Now.AddDays(-12), 3, vino1);
-        public static Reseña reseña8 = new Reseña("Buen producto, pero un poco caro", false, DateTime.Now.AddDays(-2), 4, vino2);
+        public static Reseña reseña8 = new Reseña("Buen producto, pero un poco caro", false, DateTime.Now.AddDays(-2), 4, vino20);
         public static Reseña reseña9 = new Reseña("Muy satisfecho con mi compra", true, DateTime.Now.AddDays(-6), 5, vino1);
-        public static Reseña reseña10 = new Reseña("Producto excelente, lo recomiendo", false, DateTime.Now.AddDays(-4), 5, vino2);
+        public static Reseña reseña10 = new Reseña("Producto excelente, lo recomiendo", false, DateTime.Now.AddDays(-4), 5, vino11);
         public static Reseña reseña11 = new Reseña("Excelente producto", true, DateTime.Now.AddDays(-10), 5, vino1);
         public static Reseña reseña12 = new Reseña("Buena relación calidad-precio", false, DateTime.Now.AddDays(-5), 4, vino2);
-        public static Reseña reseña13 = new Reseña("Envío rápido, producto como se describe", true, DateTime.Now.AddDays(-7), 1, vino1);
+        public static Reseña reseña13 = new Reseña("Envío rápido, producto como se describe", true, DateTime.Now.AddDays(-7), 1, vino11);
         public static Reseña reseña14 = new Reseña("No recibí el producto aún", false, DateTime.Now.AddDays(-15), 2, vino2);
         public static Reseña reseña15 = new Reseña("Producto defectuoso, pero excelente servicio al cliente", true, DateTime.Now.AddDays(-3), 3, vino1);
-        public static Reseña reseña16 = new Reseña("No lo recomiendo, mala calidad", false, DateTime.Now.AddDays(-8), 1, vino2);
+        public static Reseña reseña16 = new Reseña("No lo recomiendo, mala calidad", false, DateTime.Now.AddDays(-8), 1, vino20);
         public static Reseña reseña17 = new Reseña("El producto llegó tarde", true, DateTime.Now.AddDays(-12), 3, vino1);
-        public static Reseña reseña18 = new Reseña("Buen producto, pero un poco caro", false, DateTime.Now.AddDays(-2), 4, vino2);
+        public static Reseña reseña18 = new Reseña("Buen producto, pero un poco caro", false, DateTime.Now.AddDays(-2), 4, vino11);
         public static Reseña reseña19 = new Reseña("Muy satisfecho con mi compra", true, DateTime.Now.AddDays(-6), 3, vino1);
-        public static Reseña reseña20 = new Reseña("Producto excelente, lo recomiendo", false, DateTime.Now.AddDays(-4), 5, vino2);
+        public static Reseña reseña20 = new Reseña("Producto excelente, lo recomiendo", false, DateTime.Now.AddDays(-4), 5, vino11);
         public static Reseña reseña21 = new Reseña("El sabor es increíble, muy recomendado", true, DateTime.Now.AddDays(-11), 5, vino1);
-        public static Reseña reseña22 = new Reseña("No es lo que esperaba, decepcionante", false, DateTime.Now.AddDays(-13), 2, vino2);
+        public static Reseña reseña22 = new Reseña("No es lo que esperaba, decepcionante", false, DateTime.Now.AddDays(-13), 2, vino20);
         public static Reseña reseña23 = new Reseña("Excelente atención al cliente, buen vino", true, DateTime.Now.AddDays(-9), 4, vino1);
         public static Reseña reseña24 = new Reseña("No volveré a comprar este vino", false, DateTime.Now.AddDays(-20), 1, vino2);
-        public static Reseña reseña25 = new Reseña("Calidad superior, vale cada centavo", true, DateTime.Now.AddDays(-14), 5, vino1);
+        public static Reseña reseña25 = new Reseña("Calidad superior, vale cada centavo", true, DateTime.Now.AddDays(-14), 5, vino14);
         public static Reseña reseña26 = new Reseña("Aceptable, pero hay mejores opciones", false, DateTime.Now.AddDays(-19), 3, vino2);
         public static Reseña reseña27 = new Reseña("Entrega rápida, calidad mediocre", true, DateTime.Now.AddDays(-16), 2, vino1);
-        public static Reseña reseña28 = new Reseña("Sabor impresionante, repetiré", false, DateTime.Now.AddDays(-17), 4, vino2);
+        public static Reseña reseña28 = new Reseña("Sabor impresionante, repetiré", false, DateTime.Now.AddDays(-17), 4, vino20);
         public static Reseña reseña29 = new Reseña("Precio alto para la calidad", true, DateTime.Now.AddDays(-18), 3, vino1);
         public static Reseña reseña30 = new Reseña("No me gustó el sabor", false, DateTime.Now.AddDays(-21), 2, vino2);
-        public static Reseña reseña31 = new Reseña("Perfecto para ocasiones especiales", true, DateTime.Now.AddDays(-22), 5, vino1);
+        public static Reseña reseña31 = new Reseña("Perfecto para ocasiones especiales", true, DateTime.Now.AddDays(-22), 5, vino14);
         public static Reseña reseña32 = new Reseña("Mala experiencia, vino roto", false, DateTime.Now.AddDays(-23), 1, vino2);
-        public static Reseña reseña33 = new Reseña("Gran calidad y buen precio", true, DateTime.Now.AddDays(-24), 4, vino1);
+        public static Reseña reseña33 = new Reseña("Gran calidad y buen precio", true, DateTime.Now.AddDays(-24), 4, vino14);
         public static Reseña reseña34 = new Reseña("Sabor único, muy recomendable", false, DateTime.Now.AddDays(-25), 5, vino2);
         public static Reseña reseña35 = new Reseña("Esperaba más por el precio", true, DateTime.Now.AddDays(-26), 3, vino1);
-        public static Reseña reseña36 = new Reseña("Muy malo, no lo compraré otra vez", false, DateTime.Now.AddDays(-27), 1, vino2);
+        public static Reseña reseña36 = new Reseña("Muy malo, no lo compraré otra vez", false, DateTime.Now.AddDays(-27), 1, vino14);
         public static Reseña reseña37 = new Reseña("Recomendado para cenas especiales", true, DateTime.Now.AddDays(-28), 5, vino1);
         public static Reseña reseña38 = new Reseña("No vale la pena, pésima calidad", false, DateTime.Now.AddDays(-29), 1, vino2);
-        public static Reseña reseña39 = new Reseña("Buena compra, buen vino", true, DateTime.Now.AddDays(-30), 4, vino1);
+        public static Reseña reseña39 = new Reseña("Buena compra, buen vino", true, DateTime.Now.AddDays(-30), 4, vino14);
         public static Reseña reseña40 = new Reseña("Demasiado caro para lo que ofrece", false, DateTime.Now.AddDays(-31), 2, vino2);
         public static Reseña reseña41 = new Reseña("Sabor suave y delicado, muy bueno", true, DateTime.Now.AddDays(-2), 5, vino3);
         public static Reseña reseña42 = new Reseña("No cumplió mis expectativas", false, DateTime.Now.AddDays(-5), 2, vino4);
@@ -219,23 +189,22 @@ namespace BonvinoApp.CapaDatos
         public static Reseña reseña56 = new Reseña("Muy bueno, lo recomiendo", false, DateTime.Now.AddDays(-42), 5, vino18);
         public static Reseña reseña57 = new Reseña("Un poco dulce para mi gusto", true, DateTime.Now.AddDays(-45), 3, vino19);
         public static Reseña reseña58 = new Reseña("Perfecto para una noche de verano", false, DateTime.Now.AddDays(-48), 4, vino20);
-        public static Reseña reseña59 = new Reseña("El vino es aceptable", true, DateTime.Now.AddDays(-50), 3, vino21);
-        public static Reseña reseña60 = new Reseña("No lo volveré a comprar", false, DateTime.Now.AddDays(-53), 1, vino22);
-        public static Reseña reseña61 = new Reseña("Excelente calidad", true, DateTime.Now.AddDays(-55), 5, vino23);
-        public static Reseña reseña62 = new Reseña("Me decepcionó mucho", false, DateTime.Now.AddDays(-57), 2, vino24);
-        public static Reseña reseña63 = new Reseña("Gran vino, lo compraré de nuevo", true, DateTime.Now.AddDays(-60), 4, vino25);
-        public static Reseña reseña64 = new Reseña("No vale lo que cuesta", false, DateTime.Now.AddDays(-62), 2, vino26);
-        public static Reseña reseña65 = new Reseña("Muy buen sabor y aroma", true, DateTime.Now.AddDays(-65), 5, vino27);
-
+        public static Reseña reseña59 = new Reseña("El vino es aceptable", true, DateTime.Now.AddDays(-50), 3, vino2);
+        public static Reseña reseña60 = new Reseña("No lo volveré a comprar", false, DateTime.Now.AddDays(-53), 1, vino12);
+        public static Reseña reseña61 = new Reseña("Excelente calidad", true, DateTime.Now.AddDays(-55), 5, vino12);
+        public static Reseña reseña62 = new Reseña("Me decepcionó mucho", false, DateTime.Now.AddDays(-57), 2, vino14);
+        public static Reseña reseña63 = new Reseña("Gran vino, lo compraré de nuevo", true, DateTime.Now.AddDays(-60), 4, vino15);
+        public static Reseña reseña64 = new Reseña("No vale lo que cuesta", false, DateTime.Now.AddDays(-62), 2, vino16);
+        public static Reseña reseña65 = new Reseña("Muy buen sabor y aroma", true, DateTime.Now.AddDays(-65), 5, vino17);
         //para mostrar flujo alternativo de que no hay reseñas de somelier entre el 16/11/2023 - 18/12/2023
-        public static Reseña reseña70 = new Reseña("Sabor suave, perfecto", false, DateTime.Now.AddDays(-200), 5, vino32);
-        public static Reseña reseña71 = new Reseña("Vino decente, nada especial", false, DateTime.Now.AddDays(-200), 3, vino33);
-        public static Reseña reseña72 = new Reseña("No me gustó para nada", false, DateTime.Now.AddDays(-200), 1, vino34);
-        public static Reseña reseña73 = new Reseña("Muy bueno para su precio", false, DateTime.Now.AddDays(-200), 4, vino35);
-        public static Reseña reseña66 = new Reseña("El sabor es mediocre", false, DateTime.Now.AddDays(-170), 3, vino28);
-        public static Reseña reseña67 = new Reseña("Me encantó, lo recomiendo", false, DateTime.Now.AddDays(-170), 5, vino29);
-        public static Reseña reseña68 = new Reseña("Llegó rápido, buen vino", false, DateTime.Now.AddDays(-170), 4, vino30);
-        public static Reseña reseña69 = new Reseña("Muy ácido, no me gustó", false, DateTime.Now.AddDays(-170), 2, vino31);
+        public static Reseña reseña70 = new Reseña("Sabor suave, perfecto", false, DateTime.Now.AddDays(-200), 5, vino12);
+        public static Reseña reseña71 = new Reseña("Vino decente, nada especial", false, DateTime.Now.AddDays(-200), 3, vino13);
+        public static Reseña reseña72 = new Reseña("No me gustó para nada", false, DateTime.Now.AddDays(-200), 1, vino14);
+        public static Reseña reseña73 = new Reseña("Muy bueno para su precio", false, DateTime.Now.AddDays(-200), 4, vino15);
+        public static Reseña reseña66 = new Reseña("El sabor es mediocre", false, DateTime.Now.AddDays(-170), 3, vino18);
+        public static Reseña reseña67 = new Reseña("Me encantó, lo recomiendo", false, DateTime.Now.AddDays(-170), 5, vino19);
+        public static Reseña reseña68 = new Reseña("Llegó rápido, buen vino", false, DateTime.Now.AddDays(-170), 4, vino10);
+        public static Reseña reseña69 = new Reseña("Muy ácido, no me gustó", false, DateTime.Now.AddDays(-170), 2, vino11);
 
         private static List<Reseña> crearListaReseña()
         {
@@ -246,33 +215,115 @@ namespace BonvinoApp.CapaDatos
             listaReseñas.Add(reseña3);
             listaReseñas.Add(reseña4);
             listaReseñas.Add(reseña5);
-            listaReseñas.Add(reseña6);
-            listaReseñas.Add(reseña7);
-            listaReseñas.Add(reseña8);
-            listaReseñas.Add(reseña9);
-            listaReseñas.Add(reseña10);
-            listaReseñas.Add(reseña11);
-            listaReseñas.Add(reseña12);
-            listaReseñas.Add(reseña13);
-            listaReseñas.Add(reseña14);
+            return listaReseñas;
+        }
+
+
+        private static List<Reseña> crearListaReseña2()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
             listaReseñas.Add(reseña15);
             listaReseñas.Add(reseña16);
             listaReseñas.Add(reseña17);
             listaReseñas.Add(reseña18);
-            listaReseñas.Add(reseña19);
-            listaReseñas.Add(reseña20);
-            listaReseñas.Add(reseña21);
-            listaReseñas.Add(reseña22);
-            listaReseñas.Add(reseña23);
-            listaReseñas.Add(reseña24);
-            listaReseñas.Add(reseña25);
-            listaReseñas.Add(reseña26);
-            listaReseñas.Add(reseña27);
+            return listaReseñas;
+
+        }
+
+
+        private static List<Reseña> crearListaReseña3()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
             listaReseñas.Add(reseña28);
             listaReseñas.Add(reseña29);
             listaReseñas.Add(reseña30);
             listaReseñas.Add(reseña31);
             listaReseñas.Add(reseña32);
+            listaReseñas.Add(reseña40);
+            return listaReseñas;
+
+        }
+        private static List<Reseña> crearListaReseña4()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+
+            listaReseñas.Add(reseña41);
+            listaReseñas.Add(reseña42);
+            listaReseñas.Add(reseña43);
+            listaReseñas.Add(reseña44);
+            listaReseñas.Add(reseña45);
+            return listaReseñas;
+
+        }
+
+        private static List<Reseña> crearListaReseña5()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña54);
+            listaReseñas.Add(reseña55);
+            listaReseñas.Add(reseña56);
+            return listaReseñas;
+
+        }
+
+        private static List<Reseña> crearListaReseña6()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña67);
+            listaReseñas.Add(reseña68);
+            listaReseñas.Add(reseña69);
+            return listaReseñas;
+
+        }
+
+        private static List<Reseña> crearListaReseña7() 
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña19);
+            listaReseñas.Add(reseña20);
+            listaReseñas.Add(reseña21);
+            listaReseñas.Add(reseña22);
+            return listaReseñas;
+        }
+
+
+
+        private static List<Reseña> crearListaReseña8()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña6);
+            listaReseñas.Add(reseña7);
+            listaReseñas.Add(reseña8);
+            listaReseñas.Add(reseña9);
+            listaReseñas.Add(reseña10);
+            return listaReseñas;
+        }
+
+        private static List<Reseña> crearListaReseña9()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña23);
+            listaReseñas.Add(reseña24);
+            listaReseñas.Add(reseña25);
+            listaReseñas.Add(reseña26);
+            listaReseñas.Add(reseña27);
+            return listaReseñas;
+        }
+
+        private static List<Reseña> crearListaReseña10()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña11);
+            listaReseñas.Add(reseña12);
+            listaReseñas.Add(reseña13);
+            listaReseñas.Add(reseña14);
+            return listaReseñas;
+        }
+
+
+        private static List<Reseña> crearListaReseña11()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
             listaReseñas.Add(reseña33);
             listaReseñas.Add(reseña34);
             listaReseñas.Add(reseña35);
@@ -280,9 +331,60 @@ namespace BonvinoApp.CapaDatos
             listaReseñas.Add(reseña37);
             listaReseñas.Add(reseña38);
             listaReseñas.Add(reseña39);
-            listaReseñas.Add(reseña40);
+            return listaReseñas;
+        }
+
+        private static List<Reseña> crearListaReseña12()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña46);
+            listaReseñas.Add(reseña47);
+            listaReseñas.Add(reseña48);
+            listaReseñas.Add(reseña49);
+            return listaReseñas;
+        }
+
+        private static List<Reseña> crearListaReseña13()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña57);
+            listaReseñas.Add(reseña58);
+            listaReseñas.Add(reseña59);
+            listaReseñas.Add(reseña60);
+            listaReseñas.Add(reseña61);
+            listaReseñas.Add(reseña62);
+            return listaReseñas;
+        }
+
+
+        private static List<Reseña> crearListaReseña14()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña50);
+            listaReseñas.Add(reseña51);
+            listaReseñas.Add(reseña52);
+            listaReseñas.Add(reseña53);
+            return listaReseñas;
+        }
+
+
+        private static List<Reseña> crearListaReseña15()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
+            listaReseñas.Add(reseña63);
+            listaReseñas.Add(reseña64);
+            listaReseñas.Add(reseña65);
+            listaReseñas.Add(reseña66);
+            return listaReseñas;
+        }
+
+
+        private static List<Reseña> crearListaReseña16()
+        {
+            List<Reseña> listaReseñas = new List<Reseña>();
 
             return listaReseñas;
+
         }
     }
 }
